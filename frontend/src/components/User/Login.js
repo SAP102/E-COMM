@@ -9,23 +9,22 @@ import ForgotPassword from './ForgotPassword';
 function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { error, isAuthenticated } = useSelector((state) => state.user)  
-    const [forgotPass , setForgotPass] = useState(false)
-    const [ERROR, setError]=useState()
-    console.log("🚀 ~ file: Login.js:15 ~ Login ~ ERROR", ERROR)
+    const { error, isAuthenticated } = useSelector((state) => state.user)
+    const [forgotPass, setForgotPass] = useState(false)
+    const [ERROR, setError] = useState()
     const [user, setData] = useState({
         email: '',
         password: ''
     })
 
-    const handleData = (event) => {
-        setData({ ...user, [event.target.name]: event.target.value })
+    const handleData = (e) => {
+        setData({ ...user, [e.target.name]: e.target.value })
+        setError("")
     }
 
-
-    const hendelLogin = async(e) => {
+    const hendelLogin = async (e) => {
         e.preventDefault()
-       await dispatch(login(user.email, user.password))
+        await dispatch(login(user.email, user.password))
     }
 
     useEffect(() => {
@@ -34,7 +33,7 @@ function Login() {
                 position: "top-right",
                 autoClose: 1500,
             });
-            setError("errorField")
+            setError(error)
             dispatch(clearErrors())
         }
         if (isAuthenticated) {
@@ -57,25 +56,52 @@ function Login() {
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             Sign in to your account
                         </h2>
-
                     </div>
                     <div className="mt-8 space-y-6" >
                         <input type="hidden" name="remember" defaultValue="True" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div className='mb-2'>
                                 {/* <p htmlFor="email-address"  className="sr-only text-lg relative w-auto text-black">Email address</p> */}
-                                <input id="email-address" name="email" type="email" onChange={handleData} value={user.email} required className="appearance-none rounded-none relative block w-full px-3  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm p-3" placeholder="Email address" />
+                                <input
+                                    name="email"
+                                    type="email"
+                                    onChange={handleData}
+                                    value={user.email}
+                                    required
+                                    className={
+                                        ERROR
+                                            ?
+                                            // "border-2 border-rose-600 focus:outline-rose-600 focus:ring-rose-600 focus:bg-white focus:border-ring-rose-600"
+                                            "appearance-none rounded-none relative block w-full px-3  border border-rose-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:border-ring-rose-500 focus:z-10 sm:text-sm p-3"
+                                            : "appearance-none rounded-none relative block w-full px-3  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm p-3"
+                                    }
+                                    placeholder="Email address"
+                                />
+                                <p className="text-[#E52713] text-xs mt-1">{ERROR}</p>
                             </div>
                             <div>
                                 {/* <label htmlFor="password" className="sr-only">Password</label> */}
-                                <input id="password" name="password" onChange={handleData} value={user.password} required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+                                <input
+                                    name="password"
+                                    onChange={handleData}
+                                    value={user.password}
+                                    required
+                                    className={
+                                        ERROR
+                                            ?
+                                            // "border-2 border-rose-600 focus:outline-rose-600 focus:ring-rose-600 focus:bg-white focus:border-ring-rose-600"
+                                            "appearance-none rounded-none relative block w-full px-3  border border-rose-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:border-ring-rose-500 focus:z-10 sm:text-sm p-3"
+                                            : "appearance-none rounded-none relative block w-full px-3  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm p-3"
+                                    }
+                                    placeholder="Password"
+                                />
                             </div>
                         </div>
-                            <div className="text-sm">
-                                <button onClick={()=>setForgotPass(true)} className="font-medium text-indigo-600 hover:text-indigo-500">
-                                    Forgot your password?
-                                </button>
-                            </div>
+                        <div className="text-sm">
+                            <button onClick={() => setForgotPass(true)} className="font-medium text-indigo-600 hover:text-indigo-500">
+                                Forgot your password?
+                            </button>
+                        </div>
 
                         <div>
                             <button onClick={hendelLogin} type="submit" className="group relative w-full flex justify-center  px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 p-3">
@@ -92,7 +118,7 @@ function Login() {
                 <ToastContainer />
             </div>
             {
-                forgotPass && <ForgotPassword forgotPass={forgotPass} setForgotPass={setForgotPass}/>
+                forgotPass && <ForgotPassword forgotPass={forgotPass} setForgotPass={setForgotPass} />
             }
         </>
     )
