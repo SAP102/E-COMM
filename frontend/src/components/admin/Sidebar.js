@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 function Sidebar() {
-
+const location = useLocation()
 
 const navigation = [
-    { name: 'Dashboard', icon: HomeIcon, current: true, href: '/admin/dashbord' },
-    { name: 'Users', icon: UsersIcon, current: false, href: '/admin/user' },
+    { name: 'Dashboard', icon: HomeIcon, current: location.pathname === "/admin/dashbord" ? true : false, href: '/admin/dashbord' },
+    { name: 'Users', icon: UsersIcon, current: location.pathname === "/admin/user" ? true : false, href: '/admin/user' },
     {
       name: 'Product',
       icon: FolderIcon,
-      current: false,
+      current: location.pathname === "/admin/allproducts" || location.pathname === "/admin/createproduct" || location.pathname === "/admin/createcategory" ? true : false,
       children: [
-        { name: 'All',current: false, href: '/admin/allproducts' },
+        { name: 'All', href: '/admin/allproducts' },
         { name: 'Create', href: '/admin/createproduct' },
         { name: 'Create Category', href: '/admin/createcategory' },
       ],
     },
-    { name: 'Orders', icon: CalendarIcon, current: false, href: '/admin/Orders' },
-    { name: ' Reviews', icon: InboxIcon, current: false, href: '/admin/Reviews' },
+    { name: 'Orders', icon: CalendarIcon, current: location.pathname === "/admin/Orders" ? true : false, href: '/admin/Orders' },
+    { name: ' Reviews', icon: InboxIcon, current: location.pathname === "/admin/Reviews" ? true : false, href: '/admin/Reviews' },
   ]
 
   const [currents, setCurrents] = useState(false)

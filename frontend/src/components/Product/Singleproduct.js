@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getProductDetails, newReview } from '../../actions/productAction'
 import { useParams } from 'react-router-dom'
 import { Fragment } from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
 import { Disclosure, Tab } from '@headlessui/react'
 import { clearErrors } from '../../actions/userAction'
 import { addItemsToCart } from '../../actions/cartAction'
@@ -11,6 +10,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CheckIcon, HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { NEW_REVIEV_RESET } from '../../constants/productConstants'
+import Dropdwon from '../layout/dropdown/Dropdown'
+import { StarIcon } from '@heroicons/react/20/solid'
 
 function Singleproduct() {
 
@@ -72,7 +73,44 @@ function Singleproduct() {
 
     const [quantity, setQuantity] = useState(1);
     const [comment, setComment] = useState()
-    const [rating, setRating] = useState()
+    const [selected, setSelected] = useState()
+
+    const checkUserRating = product?.reviews && product?.reviews.find((val) => {
+        return val.name === user?.name
+    })
+
+
+    useEffect(() => {
+        setSelected(
+            checkUserRating?._id ?
+                {
+                    id: checkUserRating?.rating,
+                    name: `${checkUserRating?.rating} star`,
+                    avatar:
+                        <>
+                            {[0, 1, 2, 3, 4].map((rating) => (
+                                <StarIcon
+                                    key={rating}
+                                    className={(
+                                        checkUserRating.rating > rating ? 'text-yellow-400 w-[20px]' : 'text-gray-300 w-[20px]'
+
+                                    )}
+                                    aria-hidden="true"
+                                />
+                            ))}
+                        </>
+                } :
+                {
+                    id: 1,
+                    name: "1 star",
+                    avatar:
+                        <StarIcon
+                            className="text-yellow-400 w-[20px]"
+                            aria-hidden="true"
+                        />
+                }
+        )
+    }, [product?.review, checkUserRating])
 
     const increaseQuantity = () => {
         if (product?.Stock <= quantity) return;
@@ -96,12 +134,12 @@ function Singleproduct() {
 
     const submitReview = () => {
         const myform = new FormData()
-        myform.set("rating", rating)
+        myform.set("rating", selected.id)
         myform.set("comment", comment)
         myform.set("productId", params.id)
         dispatch(newReview(myform))
         setComment('')
-        setRating('')
+        setSelected(selected)
     }
 
     useEffect(() => {
@@ -179,11 +217,11 @@ function Singleproduct() {
 
                         {/* Product details */}
                         <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-                            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product.name}</h1>
+                            <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product?.name}</h1>
 
                             <div className="mt-3">
                                 <h2 className="sr-only">Product information</h2>
-                                <p className="text-3xl tracking-tight text-gray-900">₹{product.price}</p>
+                                <p className="text-3xl tracking-tight text-gray-900">₹{product?.price}</p>
                             </div>
                             {/* Reviews */}
                             <div className="mt-3">
@@ -226,9 +264,9 @@ function Singleproduct() {
                             {
                                 product?.Stock < 1 ? "" : <div>
 
-                                    <button onClick={decreaseQuantity}> - </button>
+                                    <button onClick={() => decreaseQuantity()}> ------------ </button>
                                     <input readOnly type="number" value={quantity} />
-                                    <button onClick={increaseQuantity}> + </button>
+                                    <button onClick={() => increaseQuantity()}> ++++++++++++ </button>
                                 </div>
                             }
                             <div className="mt-6">
@@ -308,7 +346,7 @@ function Singleproduct() {
                     {/* Add Reviews section */}
                     {
                         user ?
-                            <div className="flex items-start space-x-4">
+                            <div className="flex items-start w-[30%] space-x-4">
                                 <div className="flex-shrink-0">
                                     <img
                                         className="inline-block h-10 w-10 rounded-full"
@@ -333,7 +371,8 @@ function Singleproduct() {
                                         <label >
                                             Add your rating
                                         </label>
-                                        <input type="number" onChange={(e) => setRating(e.target.value)} value={rating} className='border-2' min={0} max={5} />
+                                        <Dropdwon selected={selected} setSelected={setSelected} />
+                                        {/* <input type="number" onChange={(e) => setSelected(e.target.value)} value={rating} className='border-2' min={0} max={5} /> */}
                                         <div className="flex justify-between pt-2">
                                             <div className="flex-shrink-0">
                                                 <button
@@ -381,12 +420,12 @@ function Singleproduct() {
                                                 </p>
                                             </div>
                                             <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                                                <h3 className="text-sm font-medium text-gray-900">Title</h3>
-
-                                                <div
+                                                <h3 className="text-sm font-medium text-gray-900">Comment</h3>
+                                                <p className="mt-3 space-y-6 text-sm text-gray-500">{!review?.comment ? review?.comment : "No any comment"}</p>
+                                                {/* <div
                                                     className="mt-3 space-y-6 text-sm text-gray-500"
-                                                    dangerouslySetInnerHTML={{ __html: review.comment }}
-                                                />
+                                                    dangerouslySetInnerHTML={{ __html: review.comment ? review.comment : "fghjk,l." }}
+                                                /> */}
                                             </div>
                                         </div>
                                         <div className="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">

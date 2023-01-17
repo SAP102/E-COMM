@@ -40,7 +40,7 @@ function AllProducts({ searchField }) {
                 return false
             }
         }))
-    }, [searchField])
+    }, [searchField, allProduct])
 
     return (
         <>

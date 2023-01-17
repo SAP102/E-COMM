@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popover, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/userAction';
 import { toast, ToastContainer } from 'react-toastify';
@@ -11,6 +11,7 @@ import { Fragment } from 'react'
 function Header({ setSearchField }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const { isAuthenticated, user } = useSelector((state) => state.user)
   const { cartItems } = useSelector((state) => state.cart)
@@ -53,12 +54,11 @@ function Header({ setSearchField }) {
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
-                  <Link to={"/products"} className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Products</Link>
-                  <span className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Category</span>
-                  <Link to={"/about"} className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">About</Link>
+                  <Link to={"/products"} className={`flex items-center text-sm font-medium ${location.pathname === "/products" ? "text-red-700" : "text-gray-700"}`}>Products</Link>
+                  <Link to={"/ctaegory"} className={`flex items-center text-sm font-medium ${location.pathname === "/ctaegory" ? "text-red-700" : "text-gray-700"} `}>Category</Link>
+                  <Link to={"/about"} className={`flex items-center text-sm font-medium ${location.pathname === "/about" ? "text-red-700" : "text-gray-700"} `}>About</Link>
                 </div>
               </Popover.Group>
-
 
               <div className="ml-auto flex items-center">
                 {

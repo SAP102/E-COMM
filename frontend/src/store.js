@@ -20,9 +20,11 @@ import {
     myOrdersReducer,
     newOrderReducer
 } from './reducers/orderReducer'
+import { categoryReducer } from './reducers/categoryReducer'
 
 const reducer = combineReducers({
     productslimit: productlimitReducer,
+    category: categoryReducer,
     allProduct: AllproductReducer,
     productDetails: productDetailsReducer,
     user: userReducer,

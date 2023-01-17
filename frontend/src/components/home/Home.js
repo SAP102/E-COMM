@@ -2,6 +2,7 @@ import { getProductlimit } from "../../actions/productAction"
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getCategory } from "../../actions/categoryAction"
 
 
 
@@ -11,6 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getProductlimit())
+    dispatch(getCategory())
   }, [dispatch])
 
 
@@ -266,7 +268,7 @@ export default function Home() {
                           {favorite.name}
                         </a>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">{favorite.price}</p>
+                      <p className="mt-1 text-sm text-gray-500">₹{favorite.price}</p>
                     </Link>
                   </div>
                 ))}

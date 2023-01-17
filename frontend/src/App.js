@@ -26,6 +26,7 @@ import ProductList from './components/admin/product/ProductList';
 import Order from './components/admin/Order';
 import CreateProduct from './components/admin/product/CreateProduct';
 import Protectedroute from './components/router/Protectedroute';
+import Category from './components/Product/Category';
 
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route exact path='/product/:id' element={<Singleproduct />} />
         <Route exact path='/products' element={<AllProducts searchField={searchField}/>} />
+        <Route exact path='/ctaegory' element={<Category />} />
+
         <Route exact path='/signup' element={<Registeruser />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
         <Route exact path='/login' element={<Login />} />
