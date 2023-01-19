@@ -79,7 +79,6 @@ function Singleproduct() {
         return val.name === user?.name
     })
 
-
     useEffect(() => {
         setSelected(
             checkUserRating?._id ?
@@ -202,7 +201,6 @@ function Singleproduct() {
                                     ))}
                                 </Tab.List>
                             </div>
-
                             <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
                                 {product?.images?.map((image) => (
                                     <Tab.Panel key={image?.id}>
@@ -214,11 +212,9 @@ function Singleproduct() {
                                 ))}
                             </Tab.Panels>
                         </Tab.Group>
-
                         {/* Product details */}
                         <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
                             <h1 className="text-3xl font-bold tracking-tight text-gray-900">{product?.name}</h1>
-
                             <div className="mt-3">
                                 <h2 className="sr-only">Product information</h2>
                                 <p className="text-3xl tracking-tight text-gray-900">₹{product?.price}</p>
@@ -241,10 +237,8 @@ function Singleproduct() {
                                     <p className="sr-only">{product?.ratings} out of 5 stars</p>
                                 </div>
                             </div>
-
                             <div className="mt-6">
                                 <h3 className="sr-only">Description</h3>
-
                                 <div
                                     className="space-y-6 text-base text-gray-700"
                                     dangerouslySetInnerHTML={{ __html: product?.description }}
@@ -263,7 +257,6 @@ function Singleproduct() {
                             }
                             {
                                 product?.Stock < 1 ? "" : <div>
-
                                     <button onClick={() => decreaseQuantity()}> ------------ </button>
                                     <input readOnly type="number" value={quantity} />
                                     <button onClick={() => increaseQuantity()}> ++++++++++++ </button>
@@ -280,7 +273,6 @@ function Singleproduct() {
                                         >
                                             Add to bag
                                         </button>
-
                                         <button
                                             type="button"
                                             className="ml-4 flex items-center justify-center rounded-md py-3 px-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
@@ -295,7 +287,6 @@ function Singleproduct() {
                                 <h2 id="details-heading" className="sr-only">
                                     Additional details
                                 </h2>
-
                                 <div className="divide-y divide-gray-200 border-t">
                                     {products.details.map((detail) => (
                                         <Disclosure as="div" key={detail.name}>
@@ -342,7 +333,6 @@ function Singleproduct() {
                         </div>
                     </div>
                     <hr />
-
                     {/* Add Reviews section */}
                     {
                         user ?
@@ -382,7 +372,6 @@ function Singleproduct() {
                                                 >
                                                     Post
                                                 </button>
-
                                             </div>
                                         </div>
                                     </div>

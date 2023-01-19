@@ -9,9 +9,8 @@ import { clearErrors, createOrder } from '../../actions/orderAction';
 
 function Payment() {
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
-
     const dispatch = useDispatch();
-    const navigate = useNavigate()  
+    const navigate = useNavigate()
     const stripe = useStripe();
     const elements = useElements();
     const payBtn = useRef(null);
@@ -32,12 +31,9 @@ function Payment() {
         shippingPrice: orderInfo.shippingCharges,
         totalPrice: orderInfo.totalPrice,
     };
-
     const submitHandler = async (e) => {
         e.preventDefault();
-
         payBtn.current.disabled = true;
-
         try {
             const config = {
                 headers: {
@@ -49,11 +45,9 @@ function Payment() {
                 paymentData,
                 config
             );
-
             const client_secret = data.client_secret;
 
             if (!stripe || !elements) return;
-
             const result = await stripe.confirmCardPayment(client_secret, {
                 payment_method: {
                     card: elements.getElement(CardElement),
@@ -77,7 +71,6 @@ function Payment() {
                         id: paymentIntent.id,
                         status: paymentIntent.status
                     }
-
                     dispatch(createOrder(order))
                     navigate('/success')
                     toast.success("Payment succeeded", {
@@ -105,7 +98,6 @@ function Payment() {
             })
         }
     };
-
     useEffect(() => {
         if (error) {
             toast.error(error, {
@@ -122,7 +114,6 @@ function Payment() {
             <div>
                 <CardElement />
             </div>
-
             <button
                 type='submit'
                 ref={payBtn}
@@ -130,7 +121,6 @@ function Payment() {
             >
                 Pay-  {orderInfo && orderInfo.totalPrice}
             </button>
-
             <ToastContainer />
         </div >
     )

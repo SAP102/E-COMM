@@ -18,12 +18,9 @@ export default function Home() {
 
   return (
     <>
-
       <div className="bg-white">
         {/* Mobile menu */}
-
         <main>
-
           <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
             <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
               <div className="sm:max-w-lg">
@@ -102,7 +99,6 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-
                   <span
                     href="/"
                     className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
@@ -113,19 +109,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-
           {/* Category section */}
           <div className="bg-gray-50 mt-[11%]">
             <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
               <div className="sm:flex sm:items-baseline sm:justify-between">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
-                <a href="/" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                <Link to="/ctaegory" className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
                   Browse all categories
                   <span aria-hidden="true"> &rarr;</span>
-                </a>
+                </Link>
               </div>
-
               <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
                 <div className="group aspect-w-2 aspect-h-1 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
                   <img
@@ -197,7 +190,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
               <div className="mt-6 sm:hidden">
                 <a href="/" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
                   Browse all categories
@@ -206,7 +198,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           {/* Featured section */}
           <section aria-labelledby="cause-heading">
             <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
@@ -236,7 +227,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
           {/* Favorites section */}
           <section aria-labelledby="favorites-heading">
             <div className="mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
@@ -249,12 +239,10 @@ export default function Home() {
                   <span aria-hidden="true"> &rarr;</span>
                 </Link>
               </div>
-
               <div className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 lg:gap-x-8">
                 {productslimit?.map((favorite, ind) => (
                   <div key={ind} className="group relative">
                     <Link to={`/product/${favorite._id}`}>
-
                       <div className="h-96 w-full overflow-hidden rounded-lg group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-3 sm:h-auto">
                         <img
                           src={favorite?.images[0].url}
@@ -273,7 +261,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
               <div className="mt-6 sm:hidden">
                 <a href="/" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
                   Browse all favorites
@@ -282,7 +269,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-
           {/* CTA section */}
           <section aria-labelledby="sale-heading">
             <div className="overflow-hidden pt-32 sm:pt-14">
@@ -302,7 +288,6 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
-
                     <div className="absolute -top-32 left-1/2 -translate-x-1/2 transform sm:top-6 sm:translate-x-0">
                       <div className="ml-24 flex min-w-max space-x-6 sm:ml-3 lg:space-x-8">
                         <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
@@ -313,7 +298,6 @@ export default function Home() {
                               alt=""
                             />
                           </div>
-
                           <div className="mt-6 flex-shrink-0 sm:mt-0">
                             <img
                               className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
@@ -330,7 +314,6 @@ export default function Home() {
                               alt=""
                             />
                           </div>
-
                           <div className="mt-6 flex-shrink-0 sm:mt-0">
                             <img
                               className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
@@ -347,7 +330,6 @@ export default function Home() {
                               alt=""
                             />
                           </div>
-
                           <div className="mt-6 flex-shrink-0 sm:mt-0">
                             <img
                               className="h-64 w-64 rounded-lg object-cover md:h-72 md:w-72"
@@ -363,12 +345,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-
         </main>
       </div>
-
-
-
     </>
   )
 }

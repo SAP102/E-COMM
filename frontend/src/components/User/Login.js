@@ -61,7 +61,6 @@ function Login() {
                         <input type="hidden" name="remember" defaultValue="True" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div className='mb-2'>
-                                {/* <p htmlFor="email-address"  className="sr-only text-lg relative w-auto text-black">Email address</p> */}
                                 <input
                                     name="email"
                                     type="email"
@@ -80,7 +79,6 @@ function Login() {
                                 <p className="text-[#E52713] text-xs mt-1">{ERROR}</p>
                             </div>
                             <div>
-                                {/* <label htmlFor="password" className="sr-only">Password</label> */}
                                 <input
                                     name="password"
                                     onChange={handleData}
@@ -102,7 +100,6 @@ function Login() {
                                 Forgot your password?
                             </button>
                         </div>
-
                         <div>
                             <button onClick={hendelLogin} type="submit" className="group relative w-full flex justify-center  px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 p-3">
                                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">

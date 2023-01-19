@@ -46,7 +46,6 @@ function Cart() {
                 <div className="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h1 className="mt-2 text-4xl font-bold tracking-tight text-black sm:text-5xl">Shopping Cart.</h1>
                     {cartItems.length === 0 ?
-
                         <main className="mx-auto flex w-full max-w-7xl flex-grow flex-col px-4 sm:px-6 lg:px-8">
                             <div className="my-auto flex-shrink-0 py-16 sm:py-32">
                                 <h1 className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Cart is Emty</h1>
@@ -65,7 +64,6 @@ function Cart() {
                                 <h2 id="cart-heading" className="sr-only">
                                     Items in your shopping cart
                                 </h2>
-
                                 <ul className="divide-y divide-gray-200 border-t border-b border-gray-200">
                                     {cartItems.map((product) => (
                                         <li key={product.product} className="flex py-6 sm:py-10">
@@ -76,7 +74,6 @@ function Cart() {
                                                     className="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                                                 />
                                             </div>
-
                                             <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                                                 <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                                     <div>
@@ -88,21 +85,15 @@ function Cart() {
                                                             </h3>
                                                         </div>
                                                         <div className="mt-1 flex text-sm">
-
                                                             <p className="text-gray-500">Category : {product.category}</p>
                                                         </div>
                                                         <p className="text-gray-500">Qty : {product.quantity}</p>
                                                         <p className="mt-1 text-sm font-medium text-gray-900">₹{product.price * product.quantity}</p>
                                                     </div>
-
                                                     <div className="mt-4 sm:mt-0 sm:pr-9">
-
-
                                                         <button onClick={() => decreaseQuantity(product.product, product.quantity)}>-</button>
                                                         <input type="number" value={product.quantity} readOnly />
                                                         <button onClick={() => increaseQuantity(product.product, product.quantity, product.stock)}>+</button>
-
-
                                                         <div className="absolute top-0 right-0">
                                                             <button onClick={() => removeItems(product.product)} type="button" className="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
                                                                 <span className="sr-only">Remove</span>
@@ -111,23 +102,19 @@ function Cart() {
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <p className="mt-4 flex space-x-2 text-sm text-gray-700">
                                                     {product.stock <= 1 ? (
                                                         <ClockIcon className="h-5 w-5 flex-shrink-0 text-gray-300" aria-hidden="true" />
                                                     ) : (
                                                         <CheckIcon className="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
                                                     )}
-
                                                     <span>{product.stock <= 1 ? `Ships in 3–4 weeks` : 'In stock'}</span>
                                                 </p>
                                             </div>
                                         </li>
-
                                     ))}
                                 </ul>
                             </section>
-
                             {/* Order summary */}
                             <section
                                 aria-labelledby="summary-heading"
@@ -136,7 +123,6 @@ function Cart() {
                                 <h2 id="summary-heading" className="text-lg font-medium text-gray-900">
                                     Order summary
                                 </h2>
-
                                 <dl className="mt-6 space-y-4">
                                     <div className="flex items-center justify-between">
                                         <dt className="text-sm text-gray-600">Subtotal</dt>
@@ -167,7 +153,6 @@ function Cart() {
                                         <dd className="text-base font-medium text-gray-900">₹{totalPrice}</dd>
                                     </div>
                                 </dl>
-
                                 <div className="mt-6">
                                     <button
                                         onClick={checkoutHandler}
@@ -179,7 +164,6 @@ function Cart() {
                                 </div>
                             </section>
                         </div>
-
                     }
 
                 </div>

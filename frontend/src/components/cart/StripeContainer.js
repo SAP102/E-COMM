@@ -12,7 +12,6 @@ function StripeContainer() {
     const { data } = await axios.get("/api/v1//stripeapikey")
     setStripeApiKey(data.stripeApiKey)
   }
-  
 
   useEffect(()=>{
     getStripeApikey()
@@ -20,7 +19,6 @@ function StripeContainer() {
   return (
     <div className="App">
       {stripeApiKey && (
-
       <Elements stripe={loadStripe(stripeApiKey)}>
         <Payment />
       </Elements>

@@ -53,7 +53,6 @@ function AllProducts({ searchField }) {
                                 Checkout out the latest release of Basic Tees, new and improved with four openings!
                             </p>
                         </div>
-
                         <div className="pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-5">
                             <div>
                                 <hr />
@@ -69,20 +68,16 @@ function AllProducts({ searchField }) {
                                     <button className='pl-[10%] border-solid border-2 outline hover:outline-1' onClick={() => { priceHendler() }} >Go</button>
                                     <button className='ml-[10%] border-solid border-2 outline hover:outline-1' onClick={() => { priceHendler() }} >Clear all</button>
                                 </div>
-
                             </div>
-
                             {/* Product grid */}
                             <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-4">
                                 {/* Replace with your content */}
-
                                 <div className="h-96 rounded-lg px-6 border-4 border-dashed border-gray-200 lg:h-full">
                                     <section aria-labelledby="favorites-heading">
                                         <div className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 lg:gap-x-8 lg:gap-y-8">
                                             {searchResult?.length > 0 ? allProduct?.map((product, ind) => (
                                                 <div key={ind} className="group relative">
                                                     <Link to={`/product/${product._id}`} >
-
                                                         <div className="overflow-hidden rounded-lg group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-3 sm:h-auto">
                                                             <img
                                                                 src={product.images[0].url}
@@ -107,14 +102,12 @@ function AllProducts({ searchField }) {
                                                 ""
                                             )}
                                         </div>
-
                                         <div className="mt-6 sm:hidden">
                                             <a href="/" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
                                                 Browse all favorites
                                                 <span aria-hidden="true"> &rarr;</span>
                                             </a>
                                         </div>
-
                                     </section>
                                 </div>
                                 <div>
@@ -129,9 +122,7 @@ function AllProducts({ searchField }) {
                                             <span className="font-medium">{productsCount}</span> results page<span className="font-medium">{page}</span>
                                         </p>
                                     </div>
-
                                     <div className="flex flex-1 justify-between sm:justify-end">
-
                                         {
                                             resultsPerPage < productsCount && (
                                                 <div>
@@ -142,7 +133,6 @@ function AllProducts({ searchField }) {
                                                         }} className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                                                         Previous
                                                     </button>
-
                                                     <button
                                                         disabled={
                                                             product >= productsCount ? true : false
@@ -158,7 +148,6 @@ function AllProducts({ searchField }) {
                                                 </div>
                                             )
                                         }
-
                                     </div>
                                 </nav>
                             </div>

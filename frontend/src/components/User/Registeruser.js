@@ -90,20 +90,13 @@ function Registeruser() {
                                 <label htmlFor="password" className="sr-only">Password</label>
                                 <input id="password" name="password" value={data.password} onChange={handleData} required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
                             </div>
-                            {/* <div className='mb-2 pt-3'>
-                                <img src={avatarPreview} alt="Avatar Preview" className='w-20 m-auto' />
-                                <input
-                                    type="file"
-                                    name="avatar"
-                                    accept="image/*" onChange={handleData} className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mt-2" />
-                            </div> */}
                             <div class="flex items-center h-24 space-x-6">
                                 <div class="shrink-0">
                                     <img class="h-16 w-16 object-cover rounded-full" src={avatarPreview} alt="Current profile photo" />
                                 </div>
                                 <label class="block">
                                     <span class="sr-only">Choose profile photo</span>
-                                    <input type="file" name="avatar" accept="image/*" onChange={handleData} class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "/>
+                                    <input type="file" name="avatar" accept="image/*" onChange={handleData} class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 " />
                                 </label>
                             </div>
                         </div>

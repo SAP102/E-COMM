@@ -20,7 +20,6 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
     const [avatar, setAvatar] = useState()
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
 
-
     const updateProfileSubmit = (e) => {
         e.preventDefault()
         const myform = new FormData()
@@ -43,8 +42,6 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
         reader.readAsDataURL(e.target.files[0])
 
     }
-
-
 
     useEffect(() => {
         if (user) {
@@ -72,8 +69,6 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
             })
         }
     }, [dispatch, error, isUpdated, user, navigate, setUpdateProfile])
-
-
 
     const cancelButtonRef = useRef(null)
     return (
@@ -115,13 +110,6 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
                                             <input id="email-address" name="email" value={email}
                                                 onChange={(e) => setEmail(e.target.value)} type="email" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Email address" />
                                         </div>
-                                        {/* <div className='mb-2 pt-3'>
-                                            <img src={avatarPreview} alt="Avatar Preview" className='w-20 m-auto' />
-                                            <input
-                                                type="file"
-                                                name="avatar"
-                                                accept="image/*" onChange={() => updateProfileDataChange()} className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mt-2" />
-                                        </div> */}
                                         <div class="flex items-center h-28 space-x-6">
                                             <div class="shrink-0">
                                                 <img class="h-16 w-16 object-cover rounded-full" src={avatarPreview} alt="Current profile photo" />

@@ -21,7 +21,7 @@ function ConfirmOrder() {
     dispatch(removeItemsFromCart(id))
   }
 
-  const proceedToPayment = () =>{
+  const proceedToPayment = () => {
     const data = {
       subtotal,
       shippingCharge,
@@ -40,64 +40,49 @@ function ConfirmOrder() {
         <main className="mx-auto max-w-7xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <h1 className="sr-only">Checkout</h1>
-
             <form className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
               <div>
                 <div>
                   <h2 className="text-xl font-medium text-gray-900">Contact information</h2>
-
                   <div className="mt-4">
                     <label htmlFor="email-address" className="block text-lg font-medium text-gray-600">
                       Email address : {user?.email}
                     </label>
                   </div>
                 </div>
-
                 <div className="mt-10 border-t border-gray-200 pt-10">
                   <h2 className="text-xl font-medium text-gray-900">Shipping information</h2>
-
                   <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                     <div>
                       <label htmlFor="first-name" className="block text-lg font-medium text-gray-600">
                         First name : {user?.name}
                       </label>
-
                     </div>
-
                     <div className="sm:col-span-2">
                       <label htmlFor="address" className="block text-lg font-medium text-gray-600">
                         Address : {shippingInfo.address}
                       </label>
                     </div>
-
                     <div>
                       <label htmlFor="city" className="block text-lg font-medium text-gray-600">
                         City : {shippingInfo.city}
                       </label>
-
                     </div>
-
                     <div>
                       <label htmlFor="country" className="block text-lg font-medium text-gray-600">
                         Country : {shippingInfo.country}
                       </label>
-
                     </div>
-
                     <div>
                       <label htmlFor="region" className="block text-lg font-medium text-gray-600">
                         State / Province : {shippingInfo.state}
                       </label>
-
                     </div>
-
                     <div>
                       <label htmlFor="postal-code" className="block text-lg font-medium text-gray-600">
                         Postal code : {shippingInfo.pinCode}
                       </label>
-
                     </div>
-
                     <div className="sm:col-span-2">
                       <label htmlFor="phone" className="block text-lg font-medium text-gray-600">
                         Phone No : {shippingInfo.phoneNo}
@@ -106,11 +91,9 @@ function ConfirmOrder() {
                   </div>
                 </div>
               </div>
-
               {/* Order summary */}
               <div className="mt-10 lg:mt-0">
                 <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
-
                 <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
                   <h3 className="sr-only">Items in your cart</h3>
                   <ul className="divide-y divide-gray-200">
@@ -119,7 +102,6 @@ function ConfirmOrder() {
                         <div className="flex-shrink-0">
                           <img src={product.image} alt="" className="w-20 rounded-md" />
                         </div>
-
                         <div className="ml-6 flex flex-1 flex-col">
                           <div className="flex">
                             <div className="min-w-0 flex-1">
@@ -131,7 +113,6 @@ function ConfirmOrder() {
                               <p className="mt-1 text-sm text-gray-500">Category : {product.category}</p>
                               <p className="mt-1 text-sm text-gray-500">Qty : {product.quantity}</p>
                             </div>
-
                             <div className="ml-4 flow-root flex-shrink-0">
                               <button
                                 type="button"
@@ -143,7 +124,6 @@ function ConfirmOrder() {
                               </button>
                             </div>
                           </div>
-
                           <div className="flex flex-1 items-end justify-between pt-2">
                             <p className="mt-1 text-sm font-medium text-gray-900">₹{product.price * product.quantity}</p>
                           </div>
@@ -169,7 +149,6 @@ function ConfirmOrder() {
                       <dd className="text-base font-medium text-gray-900">₹{totalPrice}</dd>
                     </div>
                   </dl>
-
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <button
                       type="submit"

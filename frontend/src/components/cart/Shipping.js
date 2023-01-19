@@ -154,8 +154,6 @@ function Sahipping() {
                                     className="mt-1 block w-[50%] h-8 border-2  rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                 />
                             </div>
-
-
                         </div>
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                             <button

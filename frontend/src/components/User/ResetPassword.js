@@ -39,20 +39,16 @@ function ResetPassword() {
 
     return (
         <>
-
-
-            <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="fixed inset-0 z-10 overflow-y-auto ">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 
                     <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-7">
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div className='mb-4'>
-                                {/* <label htmlFor="email-address" >New Password</label> */}
                                 <input id="email-address" name="email" value={password}
                                     onChange={(e) => setPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter Password" />
                             </div>
                             <div className='mb-4'>
-                                {/* <label htmlFor="Name" >Old Pssword</label> */}
                                 <input id="Name" name="name" value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter Confirm Password" />
                             </div>

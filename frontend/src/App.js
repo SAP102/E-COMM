@@ -26,7 +26,7 @@ import ProductList from './components/admin/product/ProductList';
 import Order from './components/admin/Order';
 import CreateProduct from './components/admin/product/CreateProduct';
 import Protectedroute from './components/router/Protectedroute';
-import Category from './components/Product/Category';
+import Category from './components/category/Category';
 
 
 function App() {

@@ -8,22 +8,19 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants'
 
-function UpdatePassword({updatepassword, setUpdatePassword}) {
+function UpdatePassword({ updatepassword, setUpdatePassword }) {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const { error, isUpdated} = useSelector((state) => {return state.profile})
-    console.log("🚀 ~ file: UpdatePassword.js:17 ~ UpdatePassword ~ isUpdated", isUpdated)
-
+    const { error, isUpdated } = useSelector((state) => { return state.profile })
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
     const updatePasswordSubmit = () => {
-        dispatch(updatePassword(oldPassword,newPassword,confirmPassword))
+        dispatch(updatePassword(oldPassword, newPassword, confirmPassword))
     }
-
     useEffect(() => {
         if (error) {
             toast.error(error, {
@@ -46,8 +43,6 @@ function UpdatePassword({updatepassword, setUpdatePassword}) {
         }
     }, [dispatch, error, isUpdated, navigate, setUpdatePassword])
 
-
-
     const cancelButtonRef = useRef(null)
     return (
         <>
@@ -64,7 +59,6 @@ function UpdatePassword({updatepassword, setUpdatePassword}) {
                     >
                         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
                     </Transition.Child>
-
                     <div className="fixed inset-0 z-10 overflow-y-auto">
                         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                             <Transition.Child
@@ -79,27 +73,23 @@ function UpdatePassword({updatepassword, setUpdatePassword}) {
                                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-7">
                                     <div className="rounded-md shadow-sm -space-y-px">
                                         <div className='mb-4'>
-                                            {/* <label htmlFor="Name" >Old Pssword</label> */}
                                             <input id="Name" name="name" value={oldPassword}
                                                 onChange={(e) => setOldPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter Old Password" />
                                         </div>
                                         <div className='mb-4'>
-                                            {/* <label htmlFor="email-address" >New Password</label> */}
                                             <input id="email-address" name="email" value={newPassword}
                                                 onChange={(e) => setNewPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter New Password" />
                                         </div>
                                         <div className='mb-4'>
-                                            {/* <label htmlFor="email-address" >Confirm Password</label> */}
                                             <input id="email-address" name="email" value={confirmPassword}
                                                 onChange={(e) => setConfirmPassword(e.target.value)} type="txt" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter Confirm Password" />
                                         </div>
-                                        
                                     </div>
                                     <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                                         <button
                                             type="button"
                                             className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                                            onClick={()=>updatePasswordSubmit()}
+                                            onClick={() => updatePasswordSubmit()}
                                         >
                                             Change Password
                                         </button>
