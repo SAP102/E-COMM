@@ -27,6 +27,7 @@ import Order from './components/admin/Order';
 import CreateProduct from './components/admin/product/CreateProduct';
 import Protectedroute from './components/router/Protectedroute';
 import Category from './components/category/Category';
+import Contained from './components/page/Contained';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header setSearchField={setSearchField} />
+      {/* <Contained/> */}
 
       <Routes>
 

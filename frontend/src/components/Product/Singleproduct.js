@@ -257,9 +257,19 @@ function Singleproduct() {
                             }
                             {
                                 product?.Stock < 1 ? "" : <div>
-                                    <button onClick={() => decreaseQuantity()}> ------------ </button>
-                                    <input readOnly type="number" value={quantity} />
-                                    <button onClick={() => increaseQuantity()}> ++++++++++++ </button>
+                                    <button 
+                                    onClick={() => decreaseQuantity()} 
+                                    className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        -</button>
+                                    <input readOnly 
+                                    className='m-2 w-8 border-solid border-2 rounded text-center'
+                                    type="number" value={quantity} />
+                                    <button
+                                        className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        onClick={() => increaseQuantity()}
+                                    >
+                                        +
+                                    </button>
                                 </div>
                             }
                             <div className="mt-6">
@@ -336,7 +346,7 @@ function Singleproduct() {
                     {/* Add Reviews section */}
                     {
                         user ?
-                            <div className="flex items-start w-[30%] space-x-4">
+                            <div className="flex items-start w-[30%] m-5 space-x-4">
                                 <div className="flex-shrink-0">
                                     <img
                                         className="inline-block h-10 w-10 rounded-full"

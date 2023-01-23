@@ -1,7 +1,20 @@
 const mongoose = require("mongoose")
+const validator = require("validator")
 
 const orderSchema = new mongoose.Schema({
     shippingInfo: {
+        fristname: {
+            type: String,
+            required: [true, "Please Enter Frist Name"],
+            maxLength: [30, "Name Connot exceed 30 characters"],
+            minLength: [2, "Name should have more than 2 characters"]
+        },
+        lastname: {
+            type: String,
+            required: [true, "Please Enter Frist Name"],
+            maxLength: [30, "Name Connot exceed 30 characters"],
+            minLength: [2, "Name should have more than 2 characters"]
+        },
         address: {
             type: String,
             required: true,
@@ -23,6 +36,12 @@ const orderSchema = new mongoose.Schema({
         pinCode: {
             type: Number,
             required: true,
+        },
+        email: {
+            type: String,
+            required: [true, "Please Enter Your Email"],
+            unique: true,
+            validate: [validator.isEmail, "Please Enter Your Email"]
         },
         phoneNo: {
             type: Number,
@@ -106,4 +125,4 @@ const orderSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model("Order",orderSchema)
+module.exports = mongoose.model("Order", orderSchema)

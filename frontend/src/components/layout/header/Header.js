@@ -43,19 +43,21 @@ function Header({ setSearchField }) {
                   <img
                     className="h-8 w-auto"
                     src='https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg'
-                    // src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt=""
                   />
                 </Link>
               </div>
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
-                <div className="flex h-full space-x-8">
-                  <Link to={"/products"} className={`flex items-center text-sm font-medium ${location.pathname === "/products" ? "border-b-2 border-blue-500 " : "text-gray-700"}`}>Products</Link>
-                  <Link to={"/ctaegory"} className={`flex items-center text-sm font-medium ${location.pathname === "/ctaegory" ? "border-b-2 border-blue-500 " : "text-gray-700"} `}>Category</Link>
-                  <Link to={"/about"} className={`flex items-center text-sm font-medium ${location.pathname === "/about" ? "border-b-2 border-blue-500 " : "text-gray-700"} `}>About</Link>
+              <div className='py-5 px-5'>
+                <div className='grid grid-cols-3 gap-5'>
+                  
+                  {/* text-base font-medium text-gray-900 hover:text-gray-700 */}
+                    <Link to={"/products"} className={`flex items-center text-base rounded hover:bg-indigo-100 font-medium py-2 px-2 ${location.pathname === "/products" ? "rounded bg-indigo-100 " : "text-gray-700"}`}>Products</Link>
+                    <Link to={"/ctaegory"} className={`flex items-center text-base rounded hover:bg-indigo-100 font-medium py-2 px-2 ${location.pathname === "/ctaegory" ? "rounded bg-indigo-100 " : "text-gray-700"} `}>Category</Link>
+                    <Link to={"/about"} className={`flex items-center text-base rounded hover:bg-indigo-100 font-medium py-2 px-2 ${location.pathname === "/about" ? "rounded bg-indigo-100 " : "text-gray-700"} `}>About</Link>                 
                 </div>
-              </Popover.Group>
+              </div>
+
               {
                 !isAuthenticated &&
                 <div className="flex h-full space-x-8 ml-[28%]">
@@ -91,7 +93,7 @@ function Header({ setSearchField }) {
                   </div>
                 </div>
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                <div className={`ml-4 flow-root rounded hover:bg-indigo-100 py-2 px-2 ${location.pathname === "/cart" ? "rounded bg-indigo-100" : ""}`}>
                   <Link to="/cart" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className={`h-6 w-6 flex-shrink-0 text-gray-400 ${location.pathname === "/cart" ? "text-blue-700" : "text-gray-700"}`}
@@ -103,7 +105,7 @@ function Header({ setSearchField }) {
                 </div>
                 {
                   isAuthenticated === true &&
-                  <div className="hidden lg:ml-8 lg:flex">
+                  <div className={`hidden lg:ml-8 lg:flex rounded hover:bg-indigo-100 py-1 px-2 ${location.pathname === "/account" || location.pathname === "/orders" || location.pathname === "/admin/dashbord" ? "rounded bg-indigo-100" : ""}`}>
                     <Menu as="div" className="relative inline-block text-left">
                       <div>
                         <Menu.Button className="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none  ">

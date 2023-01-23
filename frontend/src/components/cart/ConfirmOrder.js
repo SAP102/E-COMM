@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TrashIcon } from '@heroicons/react/20/solid'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeItemsFromCart } from '../../actions/cartAction'
 import { useNavigate } from 'react-router-dom'
+import ConfirmStep from '../page/ConfirmStep'
 
 
 function ConfirmOrder() {
@@ -21,6 +22,12 @@ function ConfirmOrder() {
     dispatch(removeItemsFromCart(id))
   }
 
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate("/")
+    }
+  }, [cartItems])
+
   const proceedToPayment = () => {
     const data = {
       subtotal,
@@ -35,6 +42,7 @@ function ConfirmOrder() {
 
   return (
     <>
+      <ConfirmStep />
       <div className="bg-gray-50">
         {/* Mobile menu */}
         <main className="mx-auto max-w-7xl px-4 pt-16 pb-24 sm:px-6 lg:px-8">
@@ -48,6 +56,11 @@ function ConfirmOrder() {
                     <label htmlFor="email-address" className="block text-lg font-medium text-gray-600">
                       Email address : {user?.email}
                     </label>
+                    <div>
+                      <label htmlFor="first-name" className="block text-lg font-medium text-gray-600">
+                        name : {user?.name}
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-10 border-t border-gray-200 pt-10">
@@ -55,7 +68,12 @@ function ConfirmOrder() {
                   <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                     <div>
                       <label htmlFor="first-name" className="block text-lg font-medium text-gray-600">
-                        First name : {user?.name}
+                        Frist name : {shippingInfo.fristname}
+                      </label>
+                    </div>
+                    <div>
+                      <label htmlFor="first-name" className="block text-lg font-medium text-gray-600">
+                        Last name : {shippingInfo.lastname}
                       </label>
                     </div>
                     <div className="sm:col-span-2">

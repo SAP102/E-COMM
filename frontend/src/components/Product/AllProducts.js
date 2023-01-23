@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Filter from './filter'
 
 
 function AllProducts({ searchField }) {
@@ -54,23 +55,9 @@ function AllProducts({ searchField }) {
                             </p>
                         </div>
                         <div className="pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-5">
-                            <div>
-                                <hr />
-                                <div className='pt-2'>
-                                    <h1>price</h1>
-                                    <label className="ml-3 text-sm text-gray-600">₹1000 - ₹5000</label>
-                                    <label className="ml-3 text-sm text-gray-600">₹5000 - ₹10,000</label>
-                                    <label className="ml-3 text-sm text-gray-600">₹5000 - ₹10,000</label>
-                                    <input className='border-solid border-2 mb-1' placeholder='0' type="number" value={minPrice} onChange={(e) => { setMinPrice(e.target.value) }} />
-                                    <input className='border-solid border-2' placeholder='0' type="number" value={maxPrice} onChange={(e) => { setMaxPrice(e.target.value) }} />
-                                </div>
-                                <div className='mt-3'>
-                                    <button className='pl-[10%] border-solid border-2 outline hover:outline-1' onClick={() => { priceHendler() }} >Go</button>
-                                    <button className='ml-[10%] border-solid border-2 outline hover:outline-1' onClick={() => { priceHendler() }} >Clear all</button>
-                                </div>
-                            </div>
+                            <Filter/>
                             {/* Product grid */}
-                            <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-4">
+                            <div className="mt-6 lg:col-span-3 lg:mt-0 xl:col-span-4">
                                 {/* Replace with your content */}
                                 <div className="h-96 rounded-lg px-6 border-4 border-dashed border-gray-200 lg:h-full">
                                     <section aria-labelledby="favorites-heading">

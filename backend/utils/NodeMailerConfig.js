@@ -3,7 +3,7 @@ module.exports = {
   //   port: 465,
     service: "gmail",
     auth:{
-      user: "sahilpethani50@gmail.com",
-      pass: "ugxjdkqmvbdvzsja"
+      user: process.env.SMPT_MAIL,
+      pass: process.env.SMPT_PASSWORD
     }
 };

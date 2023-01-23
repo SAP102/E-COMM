@@ -170,27 +170,19 @@ const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 //updateProfile
-
 const updateProfile = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email
     }
-
     if (req.body.avatar !== "undefined") {
-        // console.log("🚀 ~ file: userController.js:180 ~ updateProfile ~ req.body.avatar", req.body.avatar)
-        // const user = await User.findById(req.user.userId)
-
         const imageId = user.avatar.public_id
-
         await cloudinary.v2.uploader.destroy(imageId)
-
         const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
             folder: "avatars",
             width: 150,
             crop: "scale"
         })
-
         newUserData.avatar = {
             public_id: myCloud.public_id,
             url: myCloud.secure_url,
@@ -214,10 +206,8 @@ const getAllUser = async (req, res) => {
 };
 
 // get singel user (admin)  
-
 const getSingelUser = async (req, res, next) => {
     const user = await User.findById(req.params.id)
-
     if (!user) {
         return next(new ErrorHander(`User dose not exist with Id:${req.params.id}`))
     }
@@ -228,7 +218,6 @@ const getSingelUser = async (req, res, next) => {
 }
 
 // update user role (admin)
-
 const updateUserRole = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
@@ -248,7 +237,6 @@ const updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
 const deleteUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id)
-
     if (!user) {
         return next(new ErrorHander(`User dose not exist with Id:${req.params.id}`))
     }
@@ -259,9 +247,6 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
         message: "user removed successfully"
     })
 })
-
-
-
 
 module.exports = {
     registerUser,

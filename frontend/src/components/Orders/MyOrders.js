@@ -41,7 +41,7 @@ function MyOrders() {
                     className="border-t border-b border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border"
                   >
                     <div className="flex items-center border-b border-gray-200 p-4 sm:grid sm:grid-cols-4 sm:gap-x-6 sm:p-6">
-                      <dl className="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
+                      <div className="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
                         <div>
                           <dt className="font-medium text-gray-900">Order number</dt>
                           <dd className="mt-1 text-gray-500">{order._id}</dd>
@@ -49,16 +49,17 @@ function MyOrders() {
                         <div className="ml-[4rem]">
                           <dt className="font-medium text-gray-900">Delivery address</dt>
                           <dd className="mt-3 text-gray-500">
-                            <span className="block">{order.shippingInfo?.address},</span><p>{order.shippingInfo?.country},</p>
+                            <span className="block">{order.shippingInfo?.address},</span>
+                            <p>{order.shippingInfo?.country},</p>
                             <span className="block">{order.shippingInfo?.state},</span>
                             <span className="block">{order.shippingInfo?.city}</span>
                           </dd>
                         </div>
-                        <div className='ml-[8rem]'>
+                        <div className=''>
                           <dt className="font-medium text-gray-900">Total amount</dt>
                           <dd className="mt-1 font-medium text-gray-900">₹{order.totalPrice}</dd>
                         </div>
-                      </dl>
+                      </div>
                       {/* <div className="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
                       <a
                         href={order.href}

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { saveShippingInfo } from '../../actions/cartAction';
 import { useNavigate } from 'react-router-dom';
+import ConfirmStep from '../page/ConfirmStep';
 
 
 function Sahipping() {
@@ -12,160 +13,132 @@ function Sahipping() {
     const navigate = useNavigate()
     const { shippingInfo } = useSelector((state) => state.cart);
 
-    const [address, setAddress] = useState(shippingInfo.address);
-    const [city, setCity] = useState(shippingInfo.city);
-    const [state, setState] = useState(shippingInfo.state);
-    const [country, setCountry] = useState(shippingInfo.country);
-    const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
-    const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+    const [shippinginfo, setShippingInfo] = useState({
+        address: shippingInfo?.address,
+        city: shippingInfo?.city,
+        state: shippingInfo?.state,
+        country: shippingInfo?.country,
+        pinCode: shippingInfo?.pinCode,
+        phoneNo: shippingInfo?.phoneNo,
+        email: shippingInfo?.email,
+        fristname: shippingInfo?.fristname,
+        lastname: shippingInfo?.lastname
+    })
 
+    const hendelchange = (e) => {
+        setShippingInfo({ ...shippinginfo, [e.target.name]: e.target.value })
+    }
     const shippingSubmit = (e) => {
         e.preventDefault()
-        if (phoneNo.length < 10 || phoneNo.length > 10) {
+        if (shippinginfo.phoneNo.length < 10 || shippinginfo.phoneNo.length > 10) {
             toast.error("Phone Number should be 10 digits long", {
                 position: "top-right",
                 autoClose: 1500,
             })
             return;
         }
-        dispatch(
-            saveShippingInfo({
-                address,
-                city,
-                state,
-                country,
-                pinCode,
-                phoneNo
-            })
-        )
+        dispatch(saveShippingInfo({
+            address: shippinginfo?.address,
+            city: shippinginfo.city,
+            state: shippinginfo.state,
+            country: shippinginfo.country,
+            pinCode: shippinginfo.pinCode,
+            phoneNo: shippinginfo.phoneNo,
+            email: shippinginfo.email,
+            fristname: shippinginfo.fristname,
+            lastname: shippinginfo.lastname
+        }))
         navigate("/order/confirmorder")
-
     }
     return (
-
         <>
-            <div className="bg-white px-4 py-16 pl-[17%] shadow sm:rounded-lg ">
-                <div className="md:grid md:grid-cols-3 md:gap-6">
-                    <div className="md:col-span-1">
-                        <h3 className="text-lg font-medium leading-6 text-gray-900">Chekout Information</h3>
-                        <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
-                    </div>
-                    <div className="mt-5 md:col-span-2 md:mt-0">
-                        <div className="grid grid-cols-6 gap-6">
+            <ConfirmStep />
+            <div class="text-gray-600 sm:mt-4 px-[44%]">
+                <p class="font-medium text-lg">Personal Details</p>
+                <p>Please fill out all the fields.</p>
+            </div>
+            <div className="mt-10 sm:mt-1">
+                <div className="mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8">
+                    <div className="mt-5 md:mt-0 md:col-span-2">
+                        <div>
+                            <div className="shadow overflow-hidden sm:rounded-md pl-[17%]">
+                                <div className="px-4 py-5 bg-white sm:p-6 ">
+                                    <div className="grid grid-cols-2 gap-6">
+                                        <div className="col-span-1">
+                                            <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First name</label>
+                                            <input type="text" name="fristname"
+                                                value={shippinginfo?.fristname}
+                                                required onChange={(e) => hendelchange(e)} id="first_name" autoComplete="given-name" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">Last name</label>
+                                            <input type="text"
+                                                name="lastname"
+                                                value={shippingInfo?.lastname}
+                                                required onChange={(e) => hendelchange(e)}
+                                                id="last_name" autoComplete="family-name" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="email_address" className="block text-sm font-medium text-gray-700">Email address</label>
+                                            <input type="text" name="email"
+                                                value={shippinginfo.email}
+                                                required onChange={(e) => hendelchange(e)} id="email_address" autoComplete="email" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="number" className="block text-sm font-medium text-gray-700">Mobile No.</label>
+                                            <input type="text"
+                                                name="phoneNo"
+                                                value={shippinginfo.phoneNo}
+                                                required onChange={(e) => hendelchange(e)} id="email_address" autoComplete="number" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1 pr-[45%]">
+                                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">Country / Region</label>
+                                            <select id="country" name="country"
+                                                value={shippinginfo.country}
+                                                onChange={(e) => hendelchange(e)}
+                                                autoComplete="country" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
 
-                            <div className="col-span-6 sm:col-span-4">
-                                <label htmlFor="Phone-Number" className="block text-sm font-medium text-gray-700">
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="number"
-                                    name="Phone-Number"
-                                    id="Phone-Number"
-                                    value={phoneNo}
-                                    required onChange={(e) => setPhoneNo(e.target.value)}
-                                    className="mt-1 block w-[50%] h-8 rounded-md border-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 lh-[2 rem]"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-3">
-                                <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                    Country
-                                </label>
-                                <select
-                                    id="country"
-                                    name="country"
-                                    value={country}
-                                    onChange={(e) => setCountry(e.target.value)}
-                                    className="mt-1 block w-[50%] rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                >
-                                    <option>country</option>
-                                    {Country &&
-                                        Country.getAllCountries().map((item) => (
-                                            <option key={item.isoCode} value={item.isoCode}>
-                                                {item.name}
-                                            </option>
-                                        ))}
-                                </select>
-                            </div>
-                            {
-                                country &&
-                                <div className="col-span-6 sm:col-span-6">
-                                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                                        State
-                                    </label>
-                                    <select
-                                        id="country"
-                                        name="country"
-                                        required
-                                        value={state}
-                                        onChange={(e) => setState(e.target.value)}
-                                        className="mt-1 block w-[50%] rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                    >
-                                        <option value="">State</option>
-                                        {State &&
-                                            State.getStatesOfCountry(country).map((item) => (
-
-                                                <option key={item.isoCode} value={item.isoCode}>
-                                                    {item.name}
-                                                </option>
-                                            ))}
-                                    </select>
+                                                {Country &&
+                                                    Country.getAllCountries().map((item) => (
+                                                        <option key={item.isoCode} value={item.isoCode}>
+                                                            {item.name}
+                                                        </option>
+                                                    ))}
+                                            </select>
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="street_address" className="block text-sm font-medium text-gray-700">Street address</label>
+                                            <input type="text" name="address"
+                                                value={shippinginfo.address}
+                                                required onChange={(e) => hendelchange(e)} id="street_address" autoComplete="street-address" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
+                                            <input type="text" name="city" id="city"
+                                                value={shippinginfo.city}
+                                                required onChange={(e) => hendelchange(e)} className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="state" className="block text-sm font-medium text-gray-700">State / Province</label>
+                                            <input type="text" name="state" value={shippinginfo.state}
+                                                onChange={(e) => hendelchange(e)} id="state" className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                        <div className="col-span-1">
+                                            <label htmlFor="postal_code" className="block text-sm font-medium text-gray-700">ZIP / Postal</label>
+                                            <input type="text" id="postal_code" autoComplete="postal-code" name="pinCode"
+                                                value={shippingInfo.pinCode}
+                                                onChange={(e) => hendelchange(e)} className="mt-1 bg-gray-500/30 px-3 py-2 rounded-md focus:outline-none" />
+                                        </div>
+                                    </div>
                                 </div>
-                            }
-
-                            <div className="col-span-6">
-                                <label htmlFor="street-address" className="block text-sm font-medium text-gray-700">
-                                    Street address
-                                </label>
-                                <textarea
-                                    type="text"
-                                    name="street-address"
-                                    id="street-address"
-                                    value={address}
-                                    required onChange={(e) => setAddress(e.target.value)}
-                                    className="mt-1 block w-[40%] rounded-md border-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                />
+                                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                    <button type="submit" onClick={shippingSubmit} className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Next
+                                    </button>
+                                </div>
                             </div>
-
-                            <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                                <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                                    City
-                                </label>
-                                <input
-                                    type="text"
-                                    name="city"
-                                    id="city"
-                                    value={city}
-                                    required onChange={(e) => setCity(e.target.value)}
-                                    className="mt-1 blockw-[50%] h-8 border-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                />
-                            </div>
-
-                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
-                                    ZIP / Postal code
-                                </label>
-                                <input
-                                    type="text"
-                                    name="postal-code"
-                                    id="postal-code"
-                                    value={pinCode}
-                                    required onChange={(e) => setPinCode(e.target.value)}
-                                    className="mt-1 block w-[50%] h-8 border-2  rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                />
-                            </div>
-                        </div>
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                            <button
-                                onClick={shippingSubmit}
-                                type="submit"
-                                className="mt-8 flex w-[51%] items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                            >
-                                continue
-                            </button>
                         </div>
                     </div>
-                    <ToastContainer />
                 </div>
             </div>
         </>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { clearErrors, createOrder } from '../../actions/orderAction';
+import ConfirmStep from '../page/ConfirmStep';
 
 function Payment() {
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -109,20 +110,24 @@ function Payment() {
     }, [dispatch, error]);
 
     return (
-        <div className='border-solid border-2 '>
-            <h1>Payment</h1>
-            <div>
-                <CardElement />
-            </div>
-            <button
-                type='submit'
-                ref={payBtn}
-                onClick={(e) => submitHandler(e)}
-            >
-                Pay-  {orderInfo && orderInfo.totalPrice}
-            </button>
-            <ToastContainer />
-        </div >
+        <>
+
+            <ConfirmStep />
+            <div className='border-solid border-2 mt-6'>
+                <h1>Payment</h1>
+                <div>
+                    <CardElement />
+                </div>
+                <button
+                    type='submit'
+                    ref={payBtn}
+                    onClick={(e) => submitHandler(e)}
+                >
+                    Pay-  {orderInfo && orderInfo.totalPrice}
+                </button>
+                <ToastContainer />
+            </div >
+        </>
     )
 }
 
