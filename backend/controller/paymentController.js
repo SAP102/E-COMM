@@ -8,12 +8,12 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
     const myPayment = await stripe.paymentIntents.create({
         amount: req.body.amount,
         currency: "inr",
-        // metadata: {
-        //     company: "Ecommerce",
-        //   }
-        automatic_payment_methods: {
-            enabled: true
-        }
+        metadata: {
+            company: "Ecommerce",
+          }
+        // automatic_payment_methods: {
+        //     enabled: true
+        // }
     })
     res.status(StatusCodes.OK).json({ success: true, client_secret: myPayment.client_secret })
 })

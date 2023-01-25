@@ -5,6 +5,7 @@ const pages = [
   { name: 'products', href: '/products', current: location.pathname === "/products" ? true : false },
   { name: 'ctaegory', href: '/ctaegory', current: location.pathname === "/ctaegory" ? true : false  },
 ]
+console.log("🚀 ~ file: Contained.js:8 ~ pages", pages)
 
 export default function Contained() {
   return (
@@ -19,7 +20,7 @@ export default function Contained() {
           </div>
         </li>
         {pages.map((page) => (
-          <li key={page.name} className="flex">
+          <li key={page.current ? true:false} className="flex">
             <div className="flex items-center">
               <svg
                 className="h-full w-6 flex-shrink-0 text-gray-200"

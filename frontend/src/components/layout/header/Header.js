@@ -141,7 +141,7 @@ function Header({ setSearchField }) {
                                   to="/account"
                                   className={(
                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                    'block px-4 py-2 text-sm'
+                                    'block px-4 py-2 text-sm rounded hover:bg-indigo-100 border-b'
                                   )}
                                 >
                                   Account settings
@@ -156,7 +156,7 @@ function Header({ setSearchField }) {
                                     to="/admin/dashbord"
                                     className={(
                                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                      'block px-4 py-2 text-sm'
+                                      'block px-4 py-2 text-sm rounded hover:bg-indigo-100 border-b'
                                     )}
                                   >
                                     deshbord
@@ -170,7 +170,7 @@ function Header({ setSearchField }) {
                                   to="/orders"
                                   className={(
                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                    'block px-4 py-2 text-sm'
+                                    'block px-4 py-2 text-sm rounded hover:bg-indigo-100 border-b'
                                   )}
                                 >
                                   Orders
@@ -184,7 +184,7 @@ function Header({ setSearchField }) {
                                     onClick={() => logoutuser()}
                                     className={(
                                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                      'block w-full px-4 py-2 text-left text-sm'
+                                      'block w-full px-4 py-2 text-left text-sm rounded hover:bg-indigo-100 '
                                     )}
                                   >
                                     Sign out

@@ -1,41 +1,9 @@
-import { legacy_createStore, combineReducers, applyMiddleware } from 'redux'
+import { legacy_createStore, applyMiddleware } from 'redux'
 
 import thunk from "redux-thunk"
 
 import { composeWithDevTools } from "redux-devtools-extension"
-import {
-    AllproductReducer,
-    newReviewReducer,
-    productDetailsReducer,
-    productlimitReducer,
-} from './reducers/productReducer'
-import {
-    allUsersReducer,
-    forgotPasswordReducer,
-    profileReducer,
-    userReducer
-} from './reducers/userReducer'
-import { cartReducer } from './reducers/cartReducer'
-import {
-    myOrdersReducer,
-    newOrderReducer
-} from './reducers/orderReducer'
-import { categoryReducer } from './reducers/categoryReducer'
-
-const reducer = combineReducers({
-    productslimit: productlimitReducer,
-    category: categoryReducer,
-    allProduct: AllproductReducer,
-    productDetails: productDetailsReducer,
-    user: userReducer,
-    profile: profileReducer,
-    forgotPassword: forgotPasswordReducer,
-    cart: cartReducer,
-    newOrder: newOrderReducer,
-    myOrders: myOrdersReducer,
-    newReview: newReviewReducer,
-    allUsers: allUsersReducer,
-})
+import reducer from './reducers'
 
 let initialState = {
     cart: {

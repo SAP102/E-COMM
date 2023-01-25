@@ -18,7 +18,7 @@ const createProduct = catchAsyncErrors(async (req, res, next) => {
 //get all Product
 
 const getAllProductslimit = catchAsyncErrors(async (req, res, next) => {
-    const productlimit = await Product.find().limit(req.query.limit)
+    const productlimit = await Product.find().populate({path: "category", select: {name: 1}}).limit(req.query.limit)
     let filteredProductsCount = productlimit.length;
     res.status(StatusCodes.OK).json({
         success: true, productlimit,
@@ -29,7 +29,7 @@ const getAllProductslimit = catchAsyncErrors(async (req, res, next) => {
 const getAllProducts = catchAsyncErrors(async (req, res, next) => {
     const resultPerPage = 6
     const productCount = await Product.countDocuments()
-    const apiFeature = new ApiFeatures(Product.find().populate("category", { category: 1 }), req.query)
+    const apiFeature = new ApiFeatures(Product.find().populate({path: "category", select: {name: 1}}), req.query)
         .search()
         .filter()
         .pagination(resultPerPage)
@@ -46,7 +46,7 @@ const getAllProducts = catchAsyncErrors(async (req, res, next) => {
 //get singel product 
 
 const getProductDetails = catchAsyncErrors(async (req, res, next) => {
-    let product = await Product.findById(req.params.id).populate("category", { category: 1 })
+    let product = await Product.findById(req.params.id).populate({path: "category", select: {name: 1}})
     if (!product) {
         return next(new ErrorHander("Product note found", 404))
     }
@@ -59,7 +59,7 @@ const getProductDetails = catchAsyncErrors(async (req, res, next) => {
 // find product by category
 
 const getProductCategoryDetails = catchAsyncErrors(async (req, res, next) => {
-    let product = await Product.find({ category: req.params.id }).populate("category", { category: 1 })
+    let product = await Product.find({ category: req.params.id }).populate({path: "category", select: {name: 1}})
     if (!product) {
         return next(new ErrorHander("Product note found", 404))
     }

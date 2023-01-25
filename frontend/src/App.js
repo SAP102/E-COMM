@@ -25,9 +25,7 @@ import User from './components/admin/User';
 import ProductList from './components/admin/product/ProductList';
 import Order from './components/admin/Order';
 import CreateProduct from './components/admin/product/CreateProduct';
-import Protectedroute from './components/router/Protectedroute';
 import Category from './components/category/Category';
-import Contained from './components/page/Contained';
 
 
 function App() {
@@ -47,7 +45,7 @@ function App() {
 
         <Route exact path='/' element={<Home />} />
         <Route exact path='/product/:id' element={<Singleproduct />} />
-        <Route exact path='/products' element={<AllProducts searchField={searchField}/>} />
+        <Route exact path='/products' element={<AllProducts searchField={searchField} />} />
         <Route exact path='/ctaegory' element={<Category />} />
 
         <Route exact path='/signup' element={<Registeruser />} />
@@ -64,11 +62,11 @@ function App() {
         <Route exact path='/orders' element={<MyOrders />} />
         <Route exact path='/about' element={<About />} />
 
-        <Route exact path='/admin/dashbord' element={<Dashbord/>} />
-        <Route exact path='/admin/user' element={<User/>} />
-        <Route exact path='/admin/allproducts' element={<ProductList/>} />
-        <Route exact path='/admin/Orders' element={<Order/>} />
-        <Route exact path='/admin/createproduct' element={<CreateProduct/>} />
+        <Route exact path='/admin/dashbord' element={<Dashbord />} />
+        <Route exact path='/admin/user' element={<User />} />
+        <Route exact path='/admin/allproducts' element={<ProductList />} />
+        <Route exact path='/admin/Orders' element={<Order />} />
+        <Route exact path='/admin/createproduct' element={<CreateProduct />} />
 
 
       </Routes>

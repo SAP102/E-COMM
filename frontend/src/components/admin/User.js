@@ -15,9 +15,9 @@ function User() {
   const navigate = useNavigate()
   const [searchField, setSearchField] = useState("")
   const [delPage, setDelPage] = useState(false)
-  const [id, setId]= useState('')
-  const [name, setName]= useState('')
-  const [picture, setpicture]= useState('')
+  const [id, setId] = useState('')
+  const [name, setName] = useState('')
+  const [picture, setpicture] = useState('')
   const { error, users } = useSelector((state) => state.allUsers);
   const {
     error: deleteError,
@@ -25,7 +25,7 @@ function User() {
     message,
   } = useSelector((state) => state.profile);
 
-  const hendelDelete = (id,picture,name) => {
+  const hendelDelete = (id, picture, name) => {
     // dispatch(deleteUser(id));
     setId(id)
     setDelPage(!delPage)
@@ -72,21 +72,13 @@ function User() {
           <Sidebar />
         </div>
         <div className="w-full">
-          <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-full py-[2.5%] px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-center">
               <div className="sm:flex-auto">
                 <h1 className="text-xl font-semibold text-gray-900">Users</h1>
                 <p className="mt-2 text-sm text-gray-700">
                   A list of all the users in your account including their name, title, email and role.
                 </p>
-              </div>
-              <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-                >
-                  Add user
-                </button>
               </div>
             </div>
             <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
@@ -170,7 +162,12 @@ function User() {
                             </td>
                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.role}</td>
                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                              <button onClick={() => hendelDelete(person._id,person?.avatar.url,person.name)} className="text-indigo-600 hover:text-indigo-900">
+                              <button className="text-indigo-600 hover:text-indigo-900">
+                                Edit
+                              </button>
+                            </td>
+                            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                              <button onClick={() => hendelDelete(person._id, person?.avatar.url, person.name)} className="text-indigo-600 hover:text-indigo-900">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAl0lEQVR4nO2WUQqAIAyGfepSdQj3g0eKLpqdIfdiGBEUEeUqqPbDHlS2fWwqM0alylAP2AB0DMSV+XRm7hYDfiP5DPEEQEx2dF+ciC+y9wFcUVZxW1gBsCyhdC1uASsAtAXQSxj1GfKvP6Kz+gSAn4KUp32trUZfojYbIBA10kkoAHU2QHSumCD2JuFtI2pT8hQjG0D1eQ37A1bctuA+ggAAAABJRU5ErkJggg==" />
                               </button>
                             </td>

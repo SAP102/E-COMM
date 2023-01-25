@@ -40,6 +40,7 @@ export const userReducer = (state = { user: {} }, action) => {
         case REGISTER_USER_REQUEST:
         case LOAD_USER_REQUEST:
             return {
+                loading: true,
                 isAuthenticated: false,
             }
 
@@ -48,6 +49,7 @@ export const userReducer = (state = { user: {} }, action) => {
         case LOAD_USER_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 isAuthenticated: true,
                 user: action.payload
             }
@@ -61,6 +63,7 @@ export const userReducer = (state = { user: {} }, action) => {
         case REGISTER_USER_FAIL:
             return {
                 ...state,
+                loading: false,
                 isAuthenticated: false,
                 user: null,
                 error: action.payload
@@ -76,6 +79,7 @@ export const userReducer = (state = { user: {} }, action) => {
         case LOGOUT_FAIL:
             return {
                 ...state,
+                loading: false,
                 error: action.payload
             }
         case CLEAR_ERRORS:
@@ -97,17 +101,20 @@ export const profileReducer = (state = {}, action) => {
         case DELETE_USER_REQUEST:
             return {
                 ...state,
+                loading: true
             }
 
         case UPDATE_PROFILE_SUCCESS:
         case UPDATE_PASSWORD_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 isUpdated: action.payload
             }
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 isDeleted: action.payload.success,
                 message: action.payload.message,
             };
@@ -116,17 +123,20 @@ export const profileReducer = (state = {}, action) => {
         case DELETE_USER_FAIL:
             return {
                 ...state,
+                loading: false,
                 error: action.payload
             }
         case UPDATE_PROFILE_RESET:
         case UPDATE_PASSWORD_RESET:
             return {
                 ...state,
+                loading: false,
                 isUpdated: false
             }
         case DELETE_USER_RESET:
             return {
                 ...state,
+                loading: false,
                 isDeleted: false,
             };
 

@@ -130,10 +130,10 @@ export default function Home() {
                   <div className="flex items-end p-6 bg-[blanchedalmond]">
                     <div>
                       <h3 className="font-semibold text-white ">
-                        <a href="/">
+                       
                           <span className="absolute inset-0" />
                           New Arrivals
-                        </a>
+                    
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now
@@ -154,10 +154,10 @@ export default function Home() {
                   <div className="flex items-end p-6 sm:absolute sm:inset-0">
                     <div>
                       <h3 className="font-semibold text-white">
-                        <a href="/">
+                        
                           <span className="absolute inset-0" />
                           Accessories
-                        </a>
+                     
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now
@@ -178,10 +178,10 @@ export default function Home() {
                   <div className="flex items-end p-6 sm:absolute sm:inset-0">
                     <div>
                       <h3 className="font-semibold text-white">
-                        <a href="/">
+                        
                           <span className="absolute inset-0" />
                           Workspace
-                        </a>
+                       
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now
@@ -191,7 +191,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-6 sm:hidden">
-                <a href="/" className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+                <a className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
                   Browse all categories
                   <span aria-hidden="true"> &rarr;</span>
                 </a>

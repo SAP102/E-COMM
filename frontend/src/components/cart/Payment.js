@@ -113,13 +113,16 @@ function Payment() {
         <>
 
             <ConfirmStep />
-            <div className='border-solid border-2 mt-6'>
-                <h1>Payment</h1>
-                <div>
+            <div className='my-5'>
+                <h1 
+                className='my-5'
+                >Payment</h1>
+                <div className='border-2 py-6 px-5'>
                     <CardElement />
                 </div>
                 <button
                     type='submit'
+                    className="inline-flex items-center rounded-md border border-transparent my-5 bg-indigo-100 px-4 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     ref={payBtn}
                     onClick={(e) => submitHandler(e)}
                 >

@@ -37,17 +37,13 @@ import {
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST })
-
         const config = { headers: { "Content-Type": "application/json" } }
-
         const { data } = await axios.post(
             "/api/v1/login",
             { email, password },
             config
         )
-
         dispatch({ type: LOGIN_SUCCESS, payload: data.user })
-
     } catch (error) {
         dispatch({ type: LOGIN_FAIL, payload: error.response.data.error })
     }
@@ -58,13 +54,9 @@ export const login = (email, password) => async (dispatch) => {
 export const register = (userdata) => async (dispatch) => {
     try {
         dispatch({ type: REGISTER_USER_REQUEST })
-
         const config = { headers: { "Content-Type": "multipart/from-data" } }
-
         const { data } = await axios.post("/api/v1/register", userdata, config)
-
         dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user })
-
     } catch (error) {
         dispatch({ type: REGISTER_USER_FAIL, payload: error.response.data.error })
     }
@@ -75,11 +67,8 @@ export const register = (userdata) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
     try {
         dispatch({ type: LOAD_USER_REQUEST })
-
         const { data } = await axios.get("/api/v1/me",)
-
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
-
     } catch (error) {
         dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.error })
     }
@@ -90,9 +79,7 @@ export const loadUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         await axios.get("/api/v1/logout",)
-
         dispatch({ type: LOGOUT_SUCCESS })
-
     } catch (error) {
         dispatch({ type: LOGOUT_FAIL, payload: error.response.data.error })
     }
@@ -177,6 +164,39 @@ export const getAllUsers = () => async (dispatch) => {
         dispatch({ type: ALL_USERS_FAIL, payload: error.response.data.message });
     }
 };
+
+// export const getAllUsers = () => {
+//     return async (dispatch) => {
+//         try {
+            
+//         } catch (error) {
+            
+//         }
+//     }
+// }
+
+  
+//   export const AllInvoice = (data) => {
+//     return async (dispatch) => {
+//       try {
+//         const response = await axios.get(`${URL}/allinvoice?page=${data}`, {
+//           headers: {
+//             "x-access-token": sessionStorage.getItem("x-access-token"),
+//           },
+//         });
+//         return dispatch({
+//           type: "ALL_INVOICE",
+//           payload: response.data,
+//         });
+//       } catch (error) {
+//         return dispatch({
+//           type: "SET_LOADING",
+//           payload: error.response,
+//         });
+//       }
+//     };
+//   };
+  
 
 export const deleteUser = (id) => async (dispatch) => {
     try {
