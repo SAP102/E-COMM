@@ -8,68 +8,181 @@ function Account() {
     // const navigate = useNavigate()
     const [updateprofile, setUpdateProfile] = useState(false)
     const [updatepassword, setUpdatePassword] = useState(false)
-
     const { user } = useSelector((state) => state.user)
     const { cartItems } = useSelector((state) => state.cart)
     const { orders } = useSelector((state) => state.myOrders)
-    console.log("🚀 ~ file: Account.js:15 ~ Account ~ orders", orders)
 
     return (
         <>
-            <div className="p-16 ">
-                <div className="p-8 bg-white shadow mt-24 ml-[11%] mr-[11%]">
-                    <div className="grid grid-cols-1 md:grid-cols-3">
-                        <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
-                            <div>
-                                <p className="font-bold text-gray-700 text-xl">{orders?.length}</p>
-                                <p className="text-gray-400">Order items</p>
-                            </div>
-                            <div>
-                                <button onClick={() => setUpdateProfile(true)} className="text-white py-2 px-4 uppercase rounded bg-red-400 hover:bg-red-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" >
-                                    Edit Profile
-                                </button>
-                            </div>
-                            <div>
-                                <p className="font-bold text-gray-700 text-xl">{cartItems.length}</p>
-                                <p className="text-gray-400">Cart Item</p>
-                            </div>
-                        </div>
-                        <div className="relative">
-                            <img src={user?.avatar?.url} alt="" className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                            </img>
-                        </div>
-                        <div className="space-x-5 flex justify-between mt-32 md:mt-3 md:justify-center">
-                            <button
-                                className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-                            >
-                                <Link to={'/orders'}>
-                                    My Order
-                                </Link>
-                            </button>
-                            <button
-                                onClick={() => setUpdatePassword(true)}
-                                className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-                            >
-                                Change Password
-                            </button>
-                        </div>
+            <link
+                rel="stylesheet"
+                href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+            />
+            <link
+                rel="stylesheet"
+                href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+            />
+            <main className="profile-page">
+                <section className="relative block h-500-px">
+                    <div
+                        className="absolute top-0 w-full h-full bg-center bg-cover"
+                        style={{
+                            backgroundImage:
+                                'url("https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80")'
+                        }}
+                    >
+                        <span
+                            id="blackOverlay"
+                            className="w-full h-full absolute opacity-50 bg-black"
+                        />
                     </div>
-                    <div className="mt-20 text-center border-b pb-12">
-                        <h1 className="text-4xl font-medium text-gray-700">{user?.name}</h1>
-                        <p className="font-light text-gray-600 mt-3">{user?.email}</p>
-                        <p className="mt-8 text-gray-500">Solution Manager - Creative Tim Officer</p>
-                        <p className="mt-2 text-gray-500">University of Computer Science</p>
-                    </div>
-                    <div className="mt-12 flex flex-col justify-center">
-                        <p className="text-gray-600 text-center font-light lg:px-16">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                        <button
-                            className="text-indigo-500 py-2 px-4  font-medium mt-4"
+                    <div
+                        className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+                        style={{ transform: "translateZ(0px)" }}
+                    >
+                        <svg
+                            className="absolute bottom-0 overflow-hidden"
+                            xmlns="http://www.w3.org/2000/svg"
+                            preserveAspectRatio="none"
+                            version="1.1"
+                            viewBox="0 0 2560 100"
+                            x={0}
+                            y={0}
                         >
-                            Show more
-                        </button>
+                            <polygon
+                                className="text-blueGray-200 fill-current"
+                                points="2560 0 2560 100 0 100"
+                            />
+                        </svg>
                     </div>
-                </div>
-            </div>
+                </section>
+                <section className="relative py-16 bg-blueGray-200">
+                    <div className="container mx-auto px-4">
+                        <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+                            <div className="px-6">
+                                <div className="flex flex-wrap justify-center">
+                                    <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                                        <div className="relative">
+                                            <div className="shadow-xl rounded-full  w-[150px] h-[150px] border-none absolute -m-16 -ml-20 lg:-ml-16">
+                                                <img
+                                                    alt="..."
+                                                    src={user?.avatar?.url}
+                                                    className="h-full w-full rounded-full align-middle object-cover"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                                        <div className="py-6 px-3 mt-32 sm:mt-0">
+                                            <button
+                                                data-tooltip-target="tooltip-dark"
+                                                onClick={() => setUpdateProfile(true)}
+                                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                                type="button"
+                                            >
+                                                Edit Profile
+                                            </button>
+                                            <div
+                                                id="tooltip-dark"
+                                                role="tooltip"
+                                                className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+                                            >
+                                                Tooltip content
+                                                <div className="tooltip-arrow" data-popper-arrow="" />
+                                            </div>
+                                            <button
+                                                onClick={() => setUpdatePassword(true)}
+                                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                                type="button"
+                                            >
+                                                Reset Password
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="w-full lg:w-4/12 px-4 lg:order-1">
+                                        <div className="flex justify-center py-4 lg:pt-4 pt-8">
+                                            <div className="mr-4 p-3 text-center">
+                                                <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                                                    {orders?.length}
+                                                </span>
+                                                <span className="text-sm text-blueGray-400">My Orders</span>
+                                            </div>
+                                            <div className="lg:mr-4 p-3 text-center">
+                                                <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                                                    {cartItems.length}
+                                                </span>
+                                                <span className="text-sm text-blueGray-400">CartItems</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-center mt-12">
+                                    <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                                        {user?.name}
+                                    </h3>
+                                    <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+                                        <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400" />
+                                        {user?.email}
+                                    </div>
+                                    <div className="mb-2 text-blueGray-600 mt-10">
+                                        <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400" />
+                                        Solution Manager - Creative Tim Officer
+                                    </div>
+                                    <div className="mb-2 text-blueGray-600">
+                                        <i className="fas fa-university mr-2 text-lg text-blueGray-400" />
+                                        University of Computer Science
+                                    </div>
+                                </div>
+                                <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+                                    <div className="flex flex-wrap justify-center">
+                                        <div className="w-full lg:w-9/12 px-4">
+                                            <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                                                An artist of considerable range, Jenna the name taken by
+                                                Melbourne-raised, Brooklyn-based Nick Murphy writes,
+                                                performs and records all of his own music, giving it a warm,
+                                                intimate feel with a solid groove structure. An artist of
+                                                considerable range.
+                                            </p>
+                                            <a href="#pablo" className="font-normal text-pink-500">
+                                                Show more
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer className="relative bg-blueGray-200 pt-8 pb-6 mt-8">
+                        <div className="container mx-auto px-4">
+                            <div className="flex flex-wrap items-center md:justify-between justify-center">
+                                <div className="w-full md:w-6/12 px-4 mx-auto text-center">
+                                    <div className="text-sm text-blueGray-500 font-semibold py-1">
+                                        Made with{" "}
+                                        <a
+                                            href="https://www.creative-tim.com/product/notus-js"
+                                            className="text-blueGray-500 hover:text-gray-800"
+                                            target="_blank"
+                                        >
+                                            Notus JS
+                                        </a>{" "}
+                                        by{" "}
+                                        <a
+                                            href="https://www.creative-tim.com"
+                                            className="text-blueGray-500 hover:text-blueGray-800"
+                                            target="_blank"
+                                        >
+                                            {" "}
+                                            Creative Tim
+                                        </a>
+                                        .
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </section>
+            </main>
+
             {
                 updateprofile && <UpdateProfile updateprofile={updateprofile} setUpdateProfile={setUpdateProfile} />
             }

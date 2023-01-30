@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getCategory } from "../../actions/categoryAction"
-
+import Loading from '../layout/loadingscreen'
 
 
 export default function Home() {
@@ -18,7 +18,9 @@ export default function Home() {
 
   return (
     <>
+    
       <div className="bg-white">
+        {/* <Loading/> */}
         {/* Mobile menu */}
         <main>
           <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">

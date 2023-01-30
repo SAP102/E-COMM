@@ -7,8 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants'
 
-
-
 function ForgotPassword({ setForgotPass, forgotPass }) {
     const dispatch = useDispatch()
     const { error, message } = useSelector((state) => state.forgotPassword)

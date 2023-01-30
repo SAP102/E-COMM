@@ -10,9 +10,7 @@ function ResetPassword() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const params = useParams()
-
     const { error, isAuthenticated } = useSelector((state) => state.forgotPassword)
-
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
@@ -39,9 +37,9 @@ function ResetPassword() {
 
     return (
         <>
-            <div className="fixed inset-0 z-10 overflow-y-auto ">
+        
+            {/* <div className="fixed inset-0 z-10 overflow-y-auto ">
                 <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-
                     <div className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-7">
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div className='mb-4'>
@@ -65,7 +63,7 @@ function ResetPassword() {
                     </div>
                 </div>
             </div>
-            <ToastContainer />
+            <ToastContainer /> */}
         </>
     )
 }

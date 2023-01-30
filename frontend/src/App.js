@@ -26,10 +26,11 @@ import ProductList from './components/admin/product/ProductList';
 import Order from './components/admin/Order';
 import CreateProduct from './components/admin/product/CreateProduct';
 import Category from './components/category/Category';
+import Loading from './components/layout/loadingscreen'
 
 
 function App() {
-  const { isAuthenticated } = useSelector((state) => state.user)
+  const loading = useSelector((state) => state.user.loading)
 
   const [searchField, setSearchField] = useState("")
 
@@ -40,7 +41,7 @@ function App() {
     <BrowserRouter>
       <Header setSearchField={setSearchField} />
       {/* <Contained/> */}
-
+      {/* {loading && <Loading />} */}
       <Routes>
 
         <Route exact path='/' element={<Home />} />
@@ -70,8 +71,12 @@ function App() {
 
 
       </Routes>
-
-      <Footer />
+      {/* {
+        location.pathname === "/login" ?
+          ""
+          :
+          <Footer />
+      } */}
 
     </BrowserRouter>
 
