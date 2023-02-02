@@ -1,19 +1,22 @@
-import React from 'react'
-import {useSelector} from "react-redux"
-import {Navigate, useLocation} from "react-router-dom"
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({children}) => {
+const Protected = (props) => {
   const { isAuthenticated } = useSelector((state) => state.user)
-  console.log("🚀 ~ file: Protectedroute.js:7 ~ ProtectedRoute ~ isAuthenticated", !isAuthenticated ? "tyty" : "ooooo")
-
-    let location = useLocation();
-
-    if(!isAuthenticated) {
-        return <Navigate to="/login" replace />
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login", { replace: true });
     }
-      return children
-    
+  });
+  const navigate = useNavigate();
 
+  const { Component } = props;
+  return (
+    <div>
+      <Component />
+    </div>
+  );
 };
 
-export default ProtectedRoute;
+export default Protected;
