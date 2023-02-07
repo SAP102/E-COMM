@@ -1,4 +1,3 @@
-
 export default function Footer() {
   const footerNavigation = {
     shop: [
@@ -28,7 +27,6 @@ export default function Footer() {
       { name: 'Pinterest', href: '#' },
     ],
   }
-
 
   return (
     <footer aria-labelledby="footer-heading" className="bg-white">

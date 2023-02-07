@@ -7,11 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import ForgotPassword from './ForgotPassword';
 
-function Login() {
+function Login(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { error, isAuthenticated, loading } = useSelector((state) => state.user)
-    console.log("🚀 ~ file: Login.js:14 ~ Login ~ isAuthenticated", isAuthenticated)
     const [forgotPass, setForgotPass] = useState(false)
     const [ERROR, setError] = useState()
     const [user, setData] = useState({
@@ -28,19 +27,21 @@ function Login() {
     }
     useEffect(() => {
         if (error) {
-            toast.error(error, {
-                position: "top-right",
-                autoClose: 1500,
-            });
+            // toast.error(error, {
+            //     position: "top-right",
+            //     autoClose: 1500,
+            // });
+            props.showAlert(error, "error")
             setError(error)
             dispatch(clearErrors())
         }
         if (isAuthenticated) {
             dispatch(loadUser())
-            toast.success("Login successfully", {
-                position: "top-right",
-                autoClose: 1500,
-            });
+            // toast.success("Login successfully", {
+            //     position: "top-right",
+            //     autoClose: 1500,
+            // });
+            props.showAlert("Login successfully", "success")
             setError("")
             dispatch(loadUser())
             navigate("/account")

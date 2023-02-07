@@ -8,10 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 // import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants'
 
 function ForgotPassword({ setForgotPass, forgotPass }) {
+
     const dispatch = useDispatch()
     const { error, message } = useSelector((state) => state.forgotPassword)
     const [email, setEmail] = useState("")
-
+    
     const sendemail = () => {
         dispatch(forgotPassword(email));
     }
@@ -30,7 +31,7 @@ function ForgotPassword({ setForgotPass, forgotPass }) {
             });
             setForgotPass(false)
         }
-    }, [error, dispatch, message, setForgotPass])
+    }, [error, message, setForgotPass])
     const cancelButtonRef = useRef(null)
 
     return (
@@ -63,8 +64,14 @@ function ForgotPassword({ setForgotPass, forgotPass }) {
                                     <div className="rounded-md shadow-sm -space-y-px">
                                         <div className='mb-4'>
                                             {/* <label htmlFor="email-address" >Confirm Password</label> */}
-                                            <input id="email-address" name="email"
-                                                onChange={(e) => setEmail(e.target.value)} type="email" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter Email" />
+                                            <input id="email-address"
+                                                name="email"
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                type="email"
+                                                required
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4"
+                                                placeholder="Enter Email"
+                                            />
                                         </div>
                                     </div>
                                     <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">

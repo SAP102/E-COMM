@@ -4,12 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addItemsToCart, removeItemsFromCart } from '../../actions/cartAction'
 import { Link, useNavigate } from 'react-router-dom'
 
-
-function Cart() {
-
+const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const { cartItems } = useSelector((state) => state.cart)
 
     const increaseQuantity = (id, quantity, stock) => {

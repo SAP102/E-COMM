@@ -44,5 +44,4 @@ router
     .put(authenticateUser, authorizePermission("admin"), updateUserRole)
     .delete(authenticateUser, authorizePermission("admin"), deleteUser)
 
-
 module.exports = router

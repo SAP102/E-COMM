@@ -28,23 +28,33 @@ import CreateProduct from './components/admin/product/CreateProduct';
 import Category from './components/category/Category';
 import Loading from './components/layout/loadingscreen'
 import Protected from './components/router/Protectedroute';
-
+import Alert from './components/page/Alert';
 
 function App() {
-  const loading = useSelector((state) => state.user.loading)
 
+  const loading = useSelector((state) => state.user.loading)
   const [searchField, setSearchField] = useState("")
+  const [alert, setAlert] = useState(null)
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null)
+    }, 8000);
+  }
 
   useEffect(() => {
     store.dispatch(loadUser())
   }, [])
+
   return (
     <BrowserRouter>
       <Header setSearchField={setSearchField} />
-      {/* <Contained/> */}
-      {/* {loading && <Loading />} */}
+      <Alert alert={alert} />
       <Routes>
-
         <Route exact path='/' element={<Home />} />
         <Route exact path='/product/:id' element={<Singleproduct />} />
         <Route exact path='/products' element={<AllProducts searchField={searchField} />} />
@@ -52,7 +62,7 @@ function App() {
 
         <Route exact path='/signup' element={<Registeruser />} />
         <Route exact path='/password/reset/:token' element={<ResetPassword />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/login' element={<Login showAlert={showAlert} />} />
 
         <Route exact path='/account' element={<Protected Component={Account} />} />
 
@@ -69,16 +79,7 @@ function App() {
         <Route exact path='/admin/allproducts' element={<ProductList />} />
         <Route exact path='/admin/Orders' element={<Order />} />
         <Route exact path='/admin/createproduct' element={<CreateProduct />} />
-
-
       </Routes>
-      {/* {
-        location.pathname === "/login" ?
-          ""
-          :
-          <Footer />
-      } */}
-
     </BrowserRouter>
 
   )

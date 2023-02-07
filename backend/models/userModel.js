@@ -5,7 +5,6 @@ const crypto = require("crypto")
 const jwt = require("jsonwebtoken")
 
 const userSchema = new mongoose.Schema({
-
     name: {
         type: String,
         required: [true, "Please Enter Your Name"],
@@ -61,12 +60,9 @@ userSchema.methods.comparePassword = async function (password) {
 
 userSchema.methods.getResetPassword = function () {
     const resetToken = crypto.randomBytes(20).toString("hex")
-
     this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex")
     this.resetPasswordExpire = Date.now() + 15 * 60 * 1000
-
     return resetToken;
 }
-
 
 module.exports = mongoose.model("User", userSchema)

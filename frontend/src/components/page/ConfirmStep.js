@@ -98,7 +98,6 @@ export default function ConfirmStep() {
                     </span>
                   </div>
                 )}
-
                 {stepIdx !== 0 ? (
                   <>
                     {/* Separator */}

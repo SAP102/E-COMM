@@ -72,16 +72,40 @@ function UpdatePassword({ updatepassword, setUpdatePassword }) {
                                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-7">
                                     <div className="rounded-md shadow-sm -space-y-px">
                                         <div className='mb-4'>
-                                            <input id="Name" name="name" value={oldPassword}
-                                                onChange={(e) => setOldPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter Old Password" />
+                                            <input
+                                                id="Name"
+                                                name="name"
+                                                value={oldPassword}
+                                                onChange={(e) => setOldPassword(e.target.value)}
+                                                type="password"
+                                                required
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                                placeholder="Enter Old Password"
+                                            />
                                         </div>
                                         <div className='mb-4'>
-                                            <input id="email-address" name="email" value={newPassword}
-                                                onChange={(e) => setNewPassword(e.target.value)} type="password" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter New Password" />
+                                            <input
+                                                id="email-address"
+                                                name="email"
+                                                value={newPassword}
+                                                onChange={(e) => setNewPassword(e.target.value)}
+                                                type="password"
+                                                required
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4"
+                                                placeholder="Enter New Password"
+                                            />
                                         </div>
                                         <div className='mb-4'>
-                                            <input id="email-address" name="email" value={confirmPassword}
-                                                onChange={(e) => setConfirmPassword(e.target.value)} type="txt" required className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Enter Confirm Password" />
+                                            <input
+                                                id="email-address"
+                                                name="email"
+                                                value={confirmPassword}
+                                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                                type="txt"
+                                                required
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4"
+                                                placeholder="Enter Confirm Password"
+                                            />
                                         </div>
                                     </div>
                                     <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">

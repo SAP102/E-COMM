@@ -197,7 +197,6 @@ export const getAllUsers = () => async (dispatch) => {
 //     };
 //   };
   
-
 export const deleteUser = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_USER_REQUEST });
@@ -212,9 +211,6 @@ export const deleteUser = (id) => async (dispatch) => {
         });
     }
 };
-
-
-
 
 // clear error
 

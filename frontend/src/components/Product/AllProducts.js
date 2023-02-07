@@ -6,8 +6,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Filter from './filter'
 
-
-function AllProducts({ searchField }) {
+const AllProducts = ({ searchField }) => {
+    
     const dispatch = useDispatch()
     const { allProduct, productsCount, resultsPerPage, filteredProductCount } = useSelector(state => state.allProduct)
 

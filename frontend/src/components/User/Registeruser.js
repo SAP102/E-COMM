@@ -15,7 +15,7 @@ function Registeruser() {
         email: "",
         password: "",
     })
-    const {     name, email, password } = data
+    const { name, email, password } = data
     const [avatar, setAvatar] = useState()
     const [ERROR, setError] = useState()
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
@@ -133,7 +133,13 @@ function Registeruser() {
                                     </div>
                                     <label className="block">
                                         <span className="sr-only">Choose profile photo</span>
-                                        <input type="file" name="avatar" accept="image/*" onChange={handleData} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 " />
+                                        <input
+                                            type="file"
+                                            name="avatar"
+                                            accept="image/*"
+                                            onChange={handleData}
+                                            className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "
+                                        />
                                     </label>
                                 </div>
                                 <button

@@ -1,4 +1,3 @@
-
 const catchAsyncErrors = require("../errors/catchAsyncErrors")
 const { StatusCodes } = require("http-status-codes");
 const ProductCategory = require("../models/productCategory");

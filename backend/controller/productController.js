@@ -69,7 +69,6 @@ const getProductCategoryDetails = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
-
 // updateProduct --- Admin
 
 const updateProduct = catchAsyncErrors(async (req, res, next) => {

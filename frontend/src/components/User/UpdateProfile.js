@@ -48,7 +48,6 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
             }
         };
         reader.readAsDataURL(e.target.files[0])
-
     }
 
     useEffect(() => {
@@ -104,13 +103,27 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
                                     <div className="rounded-md shadow-sm -space-y-px">
                                         <div className='mb-4'>
                                             <label htmlFor="Name" >Name</label>
-                                            <input id="Name" name="name" value={data.name}
-                                                onChange={(e) => Hendeldata(e)} type="text" className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Enter your Name" />
+                                            <input
+                                                id="Name"
+                                                name="name"
+                                                value={data.name}
+                                                onChange={(e) => Hendeldata(e)}
+                                                type="text"
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                                placeholder="Enter your Name"
+                                            />
                                         </div>
                                         <div className='mb-4'>
                                             <label htmlFor="email-address" >Email address</label>
-                                            <input id="email-address" name="email" value={data.email}
-                                                onChange={(e) => Hendeldata(e)} type="email" className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4" placeholder="Email address" />
+                                            <input
+                                                id="email-address"
+                                                name="email"
+                                                value={data.email}
+                                                onChange={(e) => Hendeldata(e)}
+                                                type="email"
+                                                className="appearance-none rounded-none relative block w-full px-3 p-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4"
+                                                placeholder="Email address"
+                                            />
                                         </div>
                                         <div className="flex items-center h-28 space-x-6">
                                             <div className="shrink-0">
@@ -118,7 +131,13 @@ const UpdateProfile = ({ setUpdateProfile, updateprofile }) => {
                                             </div>
                                             <label className="block">
                                                 <span className="sr-only">Choose profile photo</span>
-                                                <input type="file" name="avatar" accept="image/*" onChange={(e) => updateProfileDataChange(e)} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 " />
+                                                <input
+                                                    type="file"
+                                                    name="avatar"
+                                                    accept="image/*"
+                                                    onChange={(e) => updateProfileDataChange(e)}
+                                                    className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 "
+                                                />
                                             </label>
                                         </div>
                                     </div>

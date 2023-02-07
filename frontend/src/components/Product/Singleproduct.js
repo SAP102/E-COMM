@@ -70,7 +70,6 @@ function Singleproduct() {
     const { product, error } = useSelector((state) => state.productDetails)
     const { user } = useSelector((state) => state.user)
     const { success, error: reviewerror } = useSelector((state) => state.newReview)
-
     const [quantity, setQuantity] = useState(1);
     const [comment, setComment] = useState()
     const [selected, setSelected] = useState()
@@ -110,19 +109,16 @@ function Singleproduct() {
                 }
         )
     }, [product?.review, checkUserRating])
-
     const increaseQuantity = () => {
         if (product?.Stock <= quantity) return;
         const qty = quantity + 1;
         setQuantity(qty);
     };
-
     const decreaseQuantity = () => {
         if (1 >= quantity) return;
         const qty = quantity - 1;
         setQuantity(qty);
     };
-
     const addToCartHandler = () => {
         dispatch(addItemsToCart(params.id, quantity))
         toast.success("Item added to cart", {
@@ -130,7 +126,6 @@ function Singleproduct() {
             autoClose: 1500,
         });
     }
-
     const submitReview = () => {
         const myform = new FormData()
         myform.set("rating", selected.id)
@@ -140,7 +135,6 @@ function Singleproduct() {
         setComment('')
         setSelected(selected)
     }
-
     useEffect(() => {
         dispatch(getProductDetails(params.id))
         if (error) {

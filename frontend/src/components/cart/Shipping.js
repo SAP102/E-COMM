@@ -7,7 +7,6 @@ import { saveShippingInfo } from '../../actions/cartAction';
 import { useNavigate } from 'react-router-dom';
 import ConfirmStep from '../page/ConfirmStep';
 
-
 function Sahipping() {
     const dispatch = useDispatch();
     const navigate = useNavigate()

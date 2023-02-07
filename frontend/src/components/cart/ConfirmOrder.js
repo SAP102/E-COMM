@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import ConfirmStep from '../page/ConfirmStep'
 
 
-function ConfirmOrder() {
+const ConfirmOrder = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart)
   const { user } = useSelector((state) => state.user)
-
   const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
   const shippingCharge = subtotal > 1000 ? 0 : 100
   const tax = subtotal * 0.18
@@ -35,7 +34,6 @@ function ConfirmOrder() {
       tax,
       totalPrice
     }
-
     sessionStorage.setItem("orderInfo", JSON.stringify(data))
     navigate("/process/payment")
   }

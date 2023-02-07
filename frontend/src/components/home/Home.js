@@ -15,10 +15,8 @@ export default function Home() {
     dispatch(getCategory())
   }, [dispatch])
 
-
   return (
     <>
-    
       <div className="bg-white">
         {/* <Loading/> */}
         {/* Mobile menu */}
@@ -131,11 +129,9 @@ export default function Home() {
                   <div aria-hidden="true" className="bg-gradient-to-b from-transparent to-black opacity-50" />
                   <div className="flex items-end p-6 bg-[blanchedalmond]">
                     <div>
-                      <h3 className="font-semibold text-white ">
-                       
+                      <h3 className="font-semibold text-white ">         
                           <span className="absolute inset-0" />
-                          New Arrivals
-                    
+                          New Arrivals                  
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now
@@ -155,11 +151,9 @@ export default function Home() {
                   />
                   <div className="flex items-end p-6 sm:absolute sm:inset-0">
                     <div>
-                      <h3 className="font-semibold text-white">
-                        
+                      <h3 className="font-semibold text-white">                       
                           <span className="absolute inset-0" />
-                          Accessories
-                     
+                          Accessories                    
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now
@@ -179,11 +173,9 @@ export default function Home() {
                   />
                   <div className="flex items-end p-6 sm:absolute sm:inset-0">
                     <div>
-                      <h3 className="font-semibold text-white">
-                        
+                      <h3 className="font-semibold text-white">                       
                           <span className="absolute inset-0" />
-                          Workspace
-                       
+                          Workspace                       
                       </h3>
                       <p aria-hidden="true" className="mt-1 text-sm text-white">
                         Shop now

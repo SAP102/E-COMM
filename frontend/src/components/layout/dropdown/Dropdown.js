@@ -96,7 +96,6 @@ function classNames(...classes) {
 
 export default function Dropdwon({ selected, setSelected }) {
 
-
     return (
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
@@ -111,7 +110,6 @@ export default function Dropdwon({ selected, setSelected }) {
                                 <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                             </span>
                         </Listbox.Button>
-
                         <Transition
                             show={open}
                             as={Fragment}
@@ -142,7 +140,6 @@ export default function Dropdwon({ selected, setSelected }) {
                                                         {person.name}
                                                     </span>
                                                 </div>
-
                                                 {selected ? (
                                                     <span
                                                         className={classNames(

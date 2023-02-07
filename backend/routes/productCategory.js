@@ -11,7 +11,6 @@ const router = express.Router()
 
 router.route("/productCategory").get(authenticateUser, getAllProductCategory)
 
-
 router.route("/admin/productCategory/new")
     .post(authenticateUser, authorizePermission("admin"), createProductCategory)
 

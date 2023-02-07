@@ -43,26 +43,20 @@ const registerUser = catchAsyncErrors(async (req, res, next) => {
 
 const loginUser = catchAsyncErrors(async (req, res, next) => {
     const { email, password } = req.body;
-
     if (!email || !password) {
         return next(new ErrorHander("Please Enter Email & Password", 400));
     }
-
     const user = await User.findOne({ email }).select("+password");
-
     if (!user) {
         return next(new ErrorHander("Invalid email or password", 401));
     }
-
     const isPasswordMatched = await user.comparePassword(password);
-
     if (!isPasswordMatched) {
         return next(new ErrorHander("Invalid email or password", 401));
     }
     const tokenUser = createTokenUser(user);
     const Token = attachCookiesToResponse({ res, user: tokenUser });
     res.status(StatusCodes.OK).json({ user: tokenUser, Token });
-
     // sendToken(user, 200, res);
 });
 
@@ -72,7 +66,6 @@ const logout = catchAsyncErrors(async (req, res, next) => {
         expires: new Date(Date.now()),
         httpOnly: true
     })
-
     res.status(StatusCodes.OK).json({
         success: true,
         message: "Logged Out"
@@ -88,10 +81,8 @@ const frogotPassword = catchAsyncErrors(async (req, res, next) => {
     }
     const resetToken = user.getResetPassword()
     await user.save({ validateBeforeSave: false })
-
     const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl}`
-
     const data = await ejs.renderFile(
         path.join(__dirname, "../views/forgotPassEmail.ejs"), { email: user.email,restPass: resetPasswordUrl }
     );
@@ -130,10 +121,8 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
     user.password = req.body.password
     user.resetPasswordToken = undefined
     user.resetPasswordExpire = undefined
-
     const tokenUser = createTokenUser(user);
     const Token = attachCookiesToResponse({ res, user: tokenUser });
-
     await user.save();
     res.status(StatusCodes.OK).json({ user, Token });
 })
@@ -151,9 +140,7 @@ const getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
 const updatePassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.userId).select("+password");
-
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
-
     if (!isPasswordMatched) {
         return next(new ErrorHander("oldPassword is incorrect", 400));
     }
@@ -164,7 +151,6 @@ const updatePassword = catchAsyncErrors(async (req, res, next) => {
     await user.save()
     const tokenUser = createTokenUser(user);
     const Token = attachCookiesToResponse({ res, user: tokenUser });
-
     await user.save();
     res.status(StatusCodes.OK).json({ user, Token });
 });
@@ -241,7 +227,6 @@ const deleteUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHander(`User dose not exist with Id:${req.params.id}`))
     }
     await user.remove()
-
     res.status(StatusCodes.OK).json({
         success: true,
         message: "user removed successfully"

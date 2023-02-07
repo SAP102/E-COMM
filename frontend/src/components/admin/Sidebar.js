@@ -3,7 +3,6 @@ import { Disclosure } from '@headlessui/react'
 import { CalendarIcon, ChartBarIcon, FolderIcon, HomeIcon, InboxIcon, UsersIcon } from '@heroicons/react/24/outline'
 import { Link, useLocation } from 'react-router-dom'
 
-
 function Sidebar() {
 const location = useLocation()
 
@@ -37,7 +36,6 @@ const navigation = [
               {navigation.map((item) =>
                 !item.children ? (
                   <div key={item.name}>
-                    
                     <Link
                       to={item.href}
                       className={`${item.current
@@ -50,7 +48,6 @@ const navigation = [
                         className={`${item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500'}
                       'mr-3 flex-shrink-0 h-6 w-6'`
                         }
-
                         aria-hidden="true"
                         />
                         </button>
@@ -89,7 +86,6 @@ const navigation = [
                               : 'bg-white text-gray-600 hover:bg-gray-50 hover:text-gray-900'}'group w-full flex items-center pl-2 py-2 text-sm font-medium rounded-md'`
                             }
                              >
-
                               <Disclosure.Button
                                 key={subItem.name}
                                 className="group flex w-full items-center rounded-md py-2 pl-11 pr-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"

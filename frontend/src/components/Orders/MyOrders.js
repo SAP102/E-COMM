@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearErrors, myOrders } from '../../actions/orderAction'
 
 function MyOrders() {
+
   const dispatch = useDispatch()
   const { orders, error } = useSelector((state) => state.myOrders)
   useEffect(() => {
@@ -19,6 +17,7 @@ function MyOrders() {
     }
     dispatch(myOrders())
   }, [dispatch, error])
+
   return (
     <>
       <div className="bg-white">
@@ -77,7 +76,6 @@ function MyOrders() {
                       </a>
                     </div> */}
                     </div>
-
                     {/* Products */}
                     <h4 className="sr-only">Items</h4>
                     <ul role="list" className="divide-y divide-gray-200">
@@ -99,7 +97,6 @@ function MyOrders() {
                               <p className="hidden text-gray-500 sm:mt-2 sm:block">Qty : {product.quantity}</p>
                             </div>
                           </div>
-
                         </li>
                       ))}
                     </ul>
@@ -108,7 +105,6 @@ function MyOrders() {
                         {
                           order.orderStatus === "Processing" ?
                             <div>
-
                               <CheckCircleIcon className="h-5 w-5 text-red-500" aria-hidden="true" />
                               <p className="ml-2 text-sm font-medium text-gray-500">
                                 Status : Processing
@@ -116,7 +112,6 @@ function MyOrders() {
                             </div>
                             :
                             <div>
-
                               <CheckCircleIcon className="h-5 w-5 text-green-500" aria-hidden="true" />
                               <p className="ml-2 text-sm font-medium text-gray-500">
                                 Status : Delivered
@@ -124,7 +119,6 @@ function MyOrders() {
                             </div>
                         }
                       </div>
-
                       {/* <div className="mt-6 flex items-center space-x-4 divide-x divide-gray-200 border-t border-gray-200 pt-4 text-sm font-medium sm:mt-0 sm:ml-4 sm:border-none sm:pt-0">
                             <div className="flex flex-1 justify-center">
                               <a
